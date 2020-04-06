@@ -3,6 +3,7 @@ import { ItemChance } from "../../helpers/chance";
 
 export default class RandomSouvenir {
   getRandomSouvenirTypeByItems = (items) => {
+    if (!items) throw Error();
     const ran = Math.random();
     if (items.some((e) => e.type == itemType.GREY) && ran < ItemChance.GREY)
       return itemType.GREY;

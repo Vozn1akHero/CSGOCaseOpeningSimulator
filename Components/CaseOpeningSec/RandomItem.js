@@ -9,6 +9,7 @@ import {
 
 export default class RandomItem {
   getSouvenirItemByType = (items, type) => {
+    if (!items || !type) throw new Error();
     const allGroupItems = [...items.filter((val) => val.type === type)];
     const ran = getRandomInt(0, allGroupItems.length);
     const item = allGroupItems[ran];
@@ -22,6 +23,7 @@ export default class RandomItem {
   };
 
   getItemFromCaseByType = (items, specialItems, type) => {
+    if (!items || !specialItems || !type) throw new Error();
     let isStatrak = this.getRandomStatrakByItemType(type);
     if (type === itemType.GOLD) {
       const ran = getRandomInt(0, specialItems.length);
@@ -42,6 +44,7 @@ export default class RandomItem {
   };
 
   getRandomStatrakByItemType = (type) => {
+    if (!type) throw new Error();
     const ran = Math.random();
     if (ran < ItemStatrakChance.BLUE && type == itemType.BLUE) return true;
     else if (ran < ItemStatrakChance.PURPLE && type == itemType.PURPLE)
@@ -53,6 +56,7 @@ export default class RandomItem {
   };
 
   getRandomQuality = (item) => {
+    if (!item) throw new Error();
     const ran = Math.random();
     if (
       (!item.quality ||
