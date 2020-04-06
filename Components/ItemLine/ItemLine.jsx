@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Item from "../Item/Item";
 import styled, { css } from "styled-components";
-import { slider } from "./keyframes";
+import { getSlider } from "./keyframes";
 import { itemType } from "../../helpers/item-type";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
 const Animation = styled.div`
   display: flex;
   animation: ${css`
-    ${slider} ${(props) => props.time / 1000}s;
+    ${(props) => props.slider} ${(props) => props.time / 1000}s;
   `};
   animation-fill-mode: forwards;
 
@@ -20,9 +20,20 @@ const Animation = styled.div`
 export default class ItemLine extends Component {
   static contextType = SettingsContext;
 
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+      slider: getSlider(),
+    };
+  }
+
   render() {
     return (
-      <Animation time={this.context.caseOpeningTime}>
+      <Animation slider={this.state.slider} time={this.context.caseOpeningTime}>
         {this.props.items.map((value, index) => {
           if (value.type === itemType.GOLD) {
             return (

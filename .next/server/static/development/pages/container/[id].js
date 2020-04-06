@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -579,6 +579,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 class RandomItem {
   constructor() {
     _defineProperty(this, "getSouvenirItemByType", (items, type) => {
+      if (!items || !type) throw new Error();
       const allGroupItems = [...items.filter(val => val.type === type)];
       const ran = Object(_helpers_random__WEBPACK_IMPORTED_MODULE_2__["getRandomInt"])(0, allGroupItems.length);
       const item = allGroupItems[ran];
@@ -591,6 +592,7 @@ class RandomItem {
     });
 
     _defineProperty(this, "getItemFromCaseByType", (items, specialItems, type) => {
+      if (!items || !specialItems || !type) throw new Error();
       let isStatrak = this.getRandomStatrakByItemType(type);
 
       if (type === _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].GOLD) {
@@ -614,11 +616,13 @@ class RandomItem {
     });
 
     _defineProperty(this, "getRandomStatrakByItemType", type => {
+      if (!type) throw new Error();
       const ran = Math.random();
       if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_3__["ItemStatrakChance"].BLUE && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].BLUE) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_3__["ItemStatrakChance"].PURPLE && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].PURPLE) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_3__["ItemStatrakChance"].PINK && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].PINK) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_3__["ItemStatrakChance"].RED && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].RED) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_3__["ItemStatrakChance"].GOLD && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].GOLD) return true;else return false;
     });
 
     _defineProperty(this, "getRandomQuality", item => {
+      if (!item) throw new Error();
       const ran = Math.random();
 
       if ((!item.quality || item.quality.indexOf(_helpers_quality__WEBPACK_IMPORTED_MODULE_1__["Quality"]["Battle-Scarred"]) !== -1) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_3__["QualityChance"].BATTLESCARRED) {
@@ -658,6 +662,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 class RandomSouvenir {
   constructor() {
     _defineProperty(this, "getRandomSouvenirTypeByItems", items => {
+      if (!items) throw Error();
       const ran = Math.random();
       if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].GREY) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_1__["ItemChance"].GREY) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].GREY;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].LIGHTBLUE) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_1__["ItemChance"].LIGHTBLUE) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].LIGHTBLUE;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].BLUE) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_1__["ItemChance"].BLUE) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].BLUE;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].PURPLE) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_1__["ItemChance"].PURPLE) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].PURPLE;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].PINK) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_1__["ItemChance"].PINK) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].PINK;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].RED) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_1__["ItemChance"].RED) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].RED;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].GOLD) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_1__["ItemChance"].GOLD) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_0__["itemType"].GOLD;
     });
@@ -1154,7 +1159,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 const Animation = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
   display: flex;
   animation: ${styled_components__WEBPACK_IMPORTED_MODULE_2__["css"]`
-    ${_keyframes__WEBPACK_IMPORTED_MODULE_3__["slider"]} ${props => props.time / 1000}s;
+    ${props => props.slider} ${props => props.time / 1000}s;
   `};
   animation-fill-mode: forwards;
 
@@ -1163,13 +1168,25 @@ const Animation = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
   }
 `;
 class ItemLine extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+      slider: Object(_keyframes__WEBPACK_IMPORTED_MODULE_3__["getSlider"])()
+    };
+  }
+
   render() {
     return __jsx(Animation, {
+      slider: this.state.slider,
       time: this.context.caseOpeningTime,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25,
+        lineNumber: 36,
         columnNumber: 7
       }
     }, this.props.items.map((value, index) => {
@@ -1183,7 +1200,7 @@ class ItemLine extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 29,
+            lineNumber: 40,
             columnNumber: 15
           }
         });
@@ -1199,7 +1216,7 @@ class ItemLine extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 39,
+            lineNumber: 50,
             columnNumber: 15
           }
         });
@@ -1217,26 +1234,29 @@ _defineProperty(ItemLine, "contextType", _contexts_SettingsContext__WEBPACK_IMPO
 /*!******************************************!*\
   !*** ./Components/ItemLine/keyframes.js ***!
   \******************************************/
-/*! exports provided: slider */
+/*! exports provided: getSlider */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slider", function() { return slider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSlider", function() { return getSlider; });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers_random__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/random */ "./helpers/random.js");
 
 
-const ranPos = Object(_helpers_random__WEBPACK_IMPORTED_MODULE_1__["getRandomInt"])(2978, 3104);
-const slider = styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"]`
-0% {
-  transform: translateX(0);
-}
+const getSlider = () => {
+  const pos = Object(_helpers_random__WEBPACK_IMPORTED_MODULE_1__["getRandomInt"])(2978, 3104);
+  console.log(pos);
+  return styled_components__WEBPACK_IMPORTED_MODULE_0__["keyframes"]`
+    0% {
+      transform: translateX(0);
+    }
 
-100% {
-  transform: translateX(-${ranPos}px);
-}`;
+    100% {
+      transform: translateX(-${pos}px);
+    }`;
+};
 
 /***/ }),
 
@@ -4512,7 +4532,7 @@ const Souvenir = [{
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!****************************************!*\
   !*** multi ./pages/container/[id].jsx ***!
   \****************************************/

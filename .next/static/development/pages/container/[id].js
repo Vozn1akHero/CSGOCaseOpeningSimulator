@@ -531,6 +531,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 class RandomItem {
   constructor() {
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getSouvenirItemByType", (items, type) => {
+      if (!items || !type) throw new Error();
       const allGroupItems = [...items.filter(val => val.type === type)];
       const ran = Object(_helpers_random__WEBPACK_IMPORTED_MODULE_3__["getRandomInt"])(0, allGroupItems.length);
       const item = allGroupItems[ran];
@@ -543,6 +544,7 @@ class RandomItem {
     });
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getItemFromCaseByType", (items, specialItems, type) => {
+      if (!items || !specialItems || !type) throw new Error();
       let isStatrak = this.getRandomStatrakByItemType(type);
 
       if (type === _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].GOLD) {
@@ -566,11 +568,13 @@ class RandomItem {
     });
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getRandomStatrakByItemType", type => {
+      if (!type) throw new Error();
       const ran = Math.random();
       if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_4__["ItemStatrakChance"].BLUE && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].BLUE) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_4__["ItemStatrakChance"].PURPLE && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].PURPLE) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_4__["ItemStatrakChance"].PINK && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].PINK) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_4__["ItemStatrakChance"].RED && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].RED) return true;else if (ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_4__["ItemStatrakChance"].GOLD && type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].GOLD) return true;else return false;
     });
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getRandomQuality", item => {
+      if (!item) throw new Error();
       const ran = Math.random();
 
       if ((!item.quality || item.quality.indexOf(_helpers_quality__WEBPACK_IMPORTED_MODULE_2__["Quality"]["Battle-Scarred"]) !== -1) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_4__["QualityChance"].BATTLESCARRED) {
@@ -610,6 +614,7 @@ __webpack_require__.r(__webpack_exports__);
 class RandomSouvenir {
   constructor() {
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "getRandomSouvenirTypeByItems", items => {
+      if (!items) throw Error();
       const ran = Math.random();
       if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].GREY) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_2__["ItemChance"].GREY) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].GREY;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].LIGHTBLUE) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_2__["ItemChance"].LIGHTBLUE) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].LIGHTBLUE;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].BLUE) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_2__["ItemChance"].BLUE) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].BLUE;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].PURPLE) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_2__["ItemChance"].PURPLE) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].PURPLE;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].PINK) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_2__["ItemChance"].PINK) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].PINK;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].RED) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_2__["ItemChance"].RED) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].RED;else if (items.some(e => e.type == _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].GOLD) && ran < _helpers_chance__WEBPACK_IMPORTED_MODULE_2__["ItemChance"].GOLD) return _helpers_item_type__WEBPACK_IMPORTED_MODULE_1__["itemType"].GOLD;
     });
@@ -1201,15 +1206,27 @@ function _templateObject() {
 
 
 
-const Animation = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject(), Object(styled_components__WEBPACK_IMPORTED_MODULE_4__["css"])(_templateObject2(), _keyframes__WEBPACK_IMPORTED_MODULE_5__["slider"], props => props.time / 1000));
+const Animation = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject(), Object(styled_components__WEBPACK_IMPORTED_MODULE_4__["css"])(_templateObject2(), props => props.slider, props => props.time / 1000));
 class ItemLine extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+      slider: Object(_keyframes__WEBPACK_IMPORTED_MODULE_5__["getSlider"])()
+    };
+  }
+
   render() {
     return __jsx(Animation, {
+      slider: this.state.slider,
       time: this.context.caseOpeningTime,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25,
+        lineNumber: 36,
         columnNumber: 7
       }
     }, this.props.items.map((value, index) => {
@@ -1223,7 +1240,7 @@ class ItemLine extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 29,
+            lineNumber: 40,
             columnNumber: 15
           }
         });
@@ -1239,7 +1256,7 @@ class ItemLine extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 39,
+            lineNumber: 50,
             columnNumber: 15
           }
         });
@@ -1257,19 +1274,19 @@ Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["d
 /*!******************************************!*\
   !*** ./Components/ItemLine/keyframes.js ***!
   \******************************************/
-/*! exports provided: slider */
+/*! exports provided: getSlider */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slider", function() { return slider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSlider", function() { return getSlider; });
 /* harmony import */ var _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _helpers_random__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/random */ "./helpers/random.js");
 
 
 function _templateObject() {
-  const data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n0% {\n  transform: translateX(0);\n}\n\n100% {\n  transform: translateX(-", "px);\n}"]);
+  const data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    0% {\n      transform: translateX(0);\n    }\n\n    100% {\n      transform: translateX(-", "px);\n    }"]);
 
   _templateObject = function () {
     return data;
@@ -1280,8 +1297,11 @@ function _templateObject() {
 
 
 
-const ranPos = Object(_helpers_random__WEBPACK_IMPORTED_MODULE_2__["getRandomInt"])(2978, 3104);
-const slider = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["keyframes"])(_templateObject(), ranPos);
+const getSlider = () => {
+  const pos = Object(_helpers_random__WEBPACK_IMPORTED_MODULE_2__["getRandomInt"])(2978, 3104);
+  console.log(pos);
+  return Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["keyframes"])(_templateObject(), pos);
+};
 
 /***/ }),
 
@@ -10298,7 +10318,7 @@ const Souvenir = [{
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!***************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcontainer%2F%5Bid%5D&absolutePagePath=D%3A%5CProjects%5Creact-ssr%5Creact-ssr%5Cpages%5Ccontainer%5C%5Bid%5D.jsx ***!
   \***************************************************************************************************************************************************************/
@@ -10321,5 +10341,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[id].js.map
