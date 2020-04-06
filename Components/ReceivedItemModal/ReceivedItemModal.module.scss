@@ -1,0 +1,108 @@
+.receivedItemModal {
+  width: 600px;
+  height: 481px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  text-align: center;
+  background-size: contain;
+
+  h1 {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: white;
+    margin: 10px 0px;
+  }
+  .imageWrap {
+    width: 95%;
+    margin: 0 auto;
+    height: 68%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 58%;
+    }
+  }
+  &_red,
+  &_special {
+    background: #eb4b4b;
+    background-image: linear-gradient(
+        180deg,
+        rgba(#eb4b4b, 0.5) 0%,
+        rgba(0, 0, 0, 1) 96%
+      ),
+      url("/images/linedbg.jpg");
+  }
+
+  &_pink {
+    background: #d32ee6;
+    background-image: linear-gradient(
+        180deg,
+        rgba(#d32ee6, 0.5) 0%,
+        rgba(0, 0, 0, 1) 96%
+      ),
+      url("/images/linedbg.jpg");
+  }
+
+  &_purple {
+    background: #8847ff;
+    background-image: linear-gradient(
+        180deg,
+        rgba(#8847ff, 0.5) 0%,
+        rgba(0, 0, 0, 1) 96%
+      ),
+      url("/images/linedbg.jpg");
+  }
+
+  &_blue {
+    background: #4b69ff;
+    background-image: linear-gradient(
+        180deg,
+        rgba(#4b69ff, 0.5) 0%,
+        rgba(0, 0, 0, 1) 96%
+      ),
+      url("/images/linedbg.jpg");
+  }
+
+  &_lightBlue {
+    background: #5e98d9;
+    background-image: linear-gradient(
+        180deg,
+        rgba(#5e98d9, 0.5) 0%,
+        rgba(0, 0, 0, 1) 96%
+      ),
+      url("/images/linedbg.jpg");
+  }
+
+  &_consumerGrade {
+    background: #8b98a6;
+    background-image: linear-gradient(
+        180deg,
+        rgba(#8b98a6, 0.5) 0%,
+        rgba(0, 0, 0, 1) 96%
+      ),
+      url("/images/linedbg.jpg");
+  }
+  .bottomWrap {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    width: 100%;
+    padding: 1rem 0;
+    span {
+      color: white;
+    }
+    .btnRowWrap {
+      display: flex;
+      justify-content: center;
+      button:first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

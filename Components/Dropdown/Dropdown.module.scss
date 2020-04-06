@@ -1,0 +1,58 @@
+.dropdown {
+  width: 200px;
+  z-index: 1000;
+  background: #263744;
+  color: #7d91aa8c;
+  position: relative;
+  cursor: pointer;
+
+  .titleWrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 7px;
+    font-weight: 400;
+    height: 40px;
+    align-items: center;
+
+    .title {
+      font-size: 0.9rem;
+      color: #7d91aa8c;
+    }
+
+    .optWrap {
+      display: flex;
+      align-items: center;
+    }
+
+    .chosenOption {
+      margin-right: 15px;
+      font-size: 0.95rem;
+    }
+    img {
+      transform: rotate(90deg) translate(1px, 2px);
+      margin: 0;
+      width: 6px;
+    }
+  }
+  .options {
+    min-height: 40px;
+    background: #263744;
+    border-top: 1px solid;
+    color: #7d91aa;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    align-items: center;
+    padding: 0;
+
+    .option {
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      margin: 10px 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

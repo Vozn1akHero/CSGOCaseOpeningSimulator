@@ -1,0 +1,13 @@
+.inventoryBtn {
+  background: none;
+  height: 100%;
+  width: 100px;
+  color: #809ec3;
+  border: none;
+  outline: none;
+  font-weight: 600;
+
+  &_active {
+    background: #455f89;
+  }
+}

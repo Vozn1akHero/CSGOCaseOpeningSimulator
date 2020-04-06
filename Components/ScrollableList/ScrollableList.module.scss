@@ -1,0 +1,22 @@
+.scrollableList {
+  display: grid;
+  grid-template-columns: repeat(6, 135px);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 15px;
+  justify-content: center;
+  align-content: start;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: #aaa; /* or add it to the track */
+  }
+
+  /* Add a thumb */
+  &::-webkit-scrollbar-thumb {
+    background: #5a6975;
+  }
+}

@@ -1,0 +1,33 @@
+.caseOpeningConfirmation {
+  width: 70%;
+  height: 90%;
+  margin: 0 auto;
+
+  .itemWrap {
+    width: 45%;
+    height: 65%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #273238;
+    box-shadow: 0px 0px 11px 1px rgba(0, 0, 0, 0.75);
+  }
+
+  .submitBtn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    background: #507325;
+    border: none;
+    width: 11rem;
+    height: 34px;
+    color: white;
+    box-shadow: 0px 0px 11px 1px rgba(0, 0, 0, 0.75);
+    outline: none;
+    &:active {
+      color: black;
+    }
+  }
+}
