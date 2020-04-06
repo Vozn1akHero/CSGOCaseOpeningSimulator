@@ -9,7 +9,7 @@ import {
 
 export default class RandomItem {
   getSouvenirItemByType = (items, type) => {
-    if (!items || !type) throw new Error();
+    if (items == null || type == null) throw new Error();
     const allGroupItems = [...items.filter((val) => val.type === type)];
     const ran = getRandomInt(0, allGroupItems.length);
     const item = allGroupItems[ran];

@@ -12,7 +12,6 @@ import ReceivedItems from "../ReceivedItems/ReceivedItems";
 export default class Inventory extends Component {
   constructor(props) {
     super(props);
-    console.log(Cases);
     this.state = {
       cases: Cases,
       chosenSection: 1,

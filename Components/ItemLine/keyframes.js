@@ -3,7 +3,6 @@ import { getRandomInt } from "../../helpers/random";
 
 export const getSlider = () => {
   const pos = getRandomInt(2978, 3104);
-  console.log(pos);
   return keyframes`
     0% {
       transform: translateX(0);

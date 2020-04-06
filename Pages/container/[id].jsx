@@ -7,6 +7,7 @@ import { containerType } from "../../helpers/container-type";
 import { Cases } from "../../public/cases.js";
 // import cases from "../../public/cases.json";
 import { Souvenir } from "../../public/souvenir.js";
+import { CenteredWrapper } from "../../Components/CenteredWrapper/CenteredWrapper";
 
 const Container = () => {
   const router = useRouter();
@@ -66,55 +67,42 @@ const Container = () => {
   return (
     <Layout
       content={
-        <div className='container-page'>
-          <div className='m-sec'>
-            <div className='head-wrap'></div>
-            {chosenContainerType === containerType[0] &&
-              items &&
-              specialItems && (
-                <CaseOpeningSec
-                  items={items}
-                  containerType={containerType[0]}
-                  caseTitle={containerInfo.title}
-                  caseImage={containerInfo.image}
-                  specialItems={specialItems}
-                />
-              )}
-            {chosenContainerType === containerType[1] && items && (
+        <CenteredWrapper>
+          <div className='head-wrap'></div>
+          {chosenContainerType === containerType[0] &&
+            items &&
+            specialItems && (
               <CaseOpeningSec
                 items={items}
-                containerType={containerType[1]}
+                containerType={containerType[0]}
                 caseTitle={containerInfo.title}
                 caseImage={containerInfo.image}
+                specialItems={specialItems}
               />
             )}
-            {items && (
-              <Showcase
-                baseContainerType={chosenContainerType === containerType[0]}
-                items={items}
-              />
-            )}
-          </div>
+          {chosenContainerType === containerType[1] && items && (
+            <CaseOpeningSec
+              items={items}
+              containerType={containerType[1]}
+              caseTitle={containerInfo.title}
+              caseImage={containerInfo.image}
+            />
+          )}
+          {items && (
+            <Showcase
+              baseContainerType={chosenContainerType === containerType[0]}
+              items={items}
+            />
+          )}
           )}
           <style jsx>
             {`
-              .container-page {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              }
-
               .head-wrap {
                 background: #121b24;
               }
-
-              .container-page .m-sec {
-                height: 85vh;
-                width: 70vw;
-              }
             `}
           </style>
-        </div>
+        </CenteredWrapper>
       }
     />
   );

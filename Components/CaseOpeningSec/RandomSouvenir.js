@@ -34,5 +34,6 @@ export default class RandomSouvenir {
       ran < ItemChance.GOLD
     )
       return itemType.GOLD;
+    else return itemType.GREY;
   };
 }

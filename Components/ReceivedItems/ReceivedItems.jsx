@@ -9,7 +9,6 @@ export default class ReceivedItems extends Component {
     this.state = {
       items: Storage.selectAll(),
     };
-    console.log(this.state.items);
   }
 
   render() {
