@@ -28,7 +28,7 @@ export const HeaderAnchor = (props) => {
             text-decoration: none;
           }
           .header-btn img {
-            width: 22px;
+            width: 17px;
           }
           .header-btn__border {
             height: 100%;

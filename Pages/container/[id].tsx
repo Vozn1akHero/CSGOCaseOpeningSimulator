@@ -16,8 +16,6 @@ const Container = () => {
   const [specialItems, setSpecialItems] = useState(null);
   const [chosenContainerType, setChosenContainerType] = useState(null);
 
-  console.log(1);
-
   useEffect(() => {
     if (router && router.query && router.query.id) {
       const type = router.query.type;
