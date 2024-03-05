@@ -14,7 +14,7 @@ export const GreenButton = (props) => {
 
   return (
     <>
-      <button
+      <button id={props.id}
         onClick={() => {
           props.onClick();
         }}

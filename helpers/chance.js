@@ -5,7 +5,7 @@ export const ItemChance = {
   PURPLE: 0.9590792,
   PINK: 0.9910485,
   RED: 0.9974424,
-  GOLD: 0.9999999,
+  GOLD: 1,
 };
 
 export const ItemStatrakChance = {
@@ -22,13 +22,13 @@ export const SouvenirChance = {
   BLUE: 0.992,
   PURPLE: 0.9976,
   PINK: 0.9988,
-  RED: 0.9999,
+  RED: 1,
 };
 
 export const QualityChance = {
   BATTLESCARRED: 0.3,
   FIELDTESTED: 0.55,
   WELLWORN: 0.75,
-  MINIMALWEAR: 0.9,
-  FACTORYNEW: 0.99,
+  MINIMALWEAR: 0.91,
+  FACTORYNEW: 1,
 };

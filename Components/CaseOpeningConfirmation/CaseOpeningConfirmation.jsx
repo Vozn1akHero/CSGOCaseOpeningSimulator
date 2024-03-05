@@ -10,7 +10,7 @@ export const CaseOpeningConfirmation = (props) => {
         <Item type={itemType.GREY} image={props.image} weapon={props.title} />
       </div>
 
-      <GreenButton onClick={() => props.onSubmit()} text={"Continue"} />
+      <GreenButton id="unlockBtn" onClick={() => props.onSubmit()} text="Continue" />
     </div>
   );
 };

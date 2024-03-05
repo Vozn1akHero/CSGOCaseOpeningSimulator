@@ -136,7 +136,7 @@ export default class ReceivedItemModal extends Component {
               }}
               text='Continue'
             />
-            <GreenButton
+            <GreenButton id='tryAgainBtn'
               onClick={() => {
                 this.props.onTryAgainBtnClick();
               }}

@@ -24,7 +24,7 @@ export default class RandomItem {
 
   getItemFromCaseByType = (items, specialItems, type) => {
     if (!items || !specialItems || !type) throw new Error();
-    let isStatrak = this.getRandomStatrakByItemType(type);
+    const isStatrak = this.getRandomStatrakByItemType(type);
     if (type === itemType.GOLD) {
       const ran = getRandomInt(0, specialItems.length);
       const item = specialItems[ran];

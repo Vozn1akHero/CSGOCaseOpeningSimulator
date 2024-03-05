@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import { containerType } from "../../helpers/container-type";
 import Storage from "../../helpers/storage";
@@ -11,6 +11,7 @@ import { UnlockingContainerNotification } from "../UnlockingContainerNotificatio
 import RandomCaseItem from "./RandomCaseItem";
 import RandomItem from "./RandomItem";
 import RandomSouvenir from "./RandomSouvenir";
+import { itemType } from "../../helpers/item-type";
 
 export const CaseOpeningSec = (props) => {
   const context = useContext(SettingsContext);
@@ -21,35 +22,69 @@ export const CaseOpeningSec = (props) => {
   );
   const [receivedItem, setReceivedItem] = useState(null);
   const router = useRouter();
+  const ActItemIndex = 25;
+  const [cancellationRequested, setCancellationRequested] = useState(false)
+  //const [autoOpenedCount, setAutoOpenedCount] = useState(0)
 
-  const generateItem = () => {
+  useEffect(() => {
+    document.addEventListener("keydown", handleQuickOpen)
+
+    return () => {
+      document.removeEventListener("keydown", handleQuickOpen)
+    }
+  }, [])
+
+  // useEffect(() => {
+  //   if (receivedItemModalVisible) {
+  //     const tryAgainBtn = document.getElementById("tryAgainBtn")
+  //     tryAgainBtn?.click();
+  //     setTimeout(() => {
+  //       const unlockBtn = document.getElementById("unlockBtn")
+  //       unlockBtn?.click();
+  //     }, 500);
+  //   }
+  // }, [receivedItemModalVisible])
+
+  const handleQuickOpen = e => {
+    if (e.key === "Escape") {
+      setCancellationRequested(true);
+    }
+  }
+
+  const generateItem = (index) => {
     let item;
     switch (props.containerType) {
       case containerType[0]:
-        item = selectRandomItem();
-        break;
+        {
+          item = selectRandomItem();
+          if (item.type === itemType.GOLD && index !== ActItemIndex) {
+            console.log("got knife")
+            return generateItem(index);
+          }
+          break;
+        }
       case containerType[1]:
         item = selectRandomSouvenir();
         break;
-      default:
-        item = selectRandomItem();
-        break;
+      // default:
+      //   item = selectRandomItem();
+      //   break;
     }
     return item;
   };
 
   const generateLine = () => {
     let elements = [];
-    let actItem = generateItem();
-    setReceivedItem(actItem);
-    Storage.saveReceivedItem(actItem);
+    let actItem = generateItem(ActItemIndex);
     for (let index = 0; index < 30; index++) {
-      if (index === 25) {
+      if (index === ActItemIndex) {
         elements.push(actItem);
       } else {
-        elements.push(generateItem());
+        elements.push(generateItem(index));
       }
     }
+    setReceivedItem(actItem);
+    Storage.saveReceivedItem(actItem);
     return <ItemLine items={elements} />;
   };
 
@@ -61,8 +96,8 @@ export const CaseOpeningSec = (props) => {
     return item;
   };
   const selectRandomItem = () => {
-    let randomItem = new RandomItem();
-    let randomCaseItem = new RandomCaseItem();
+    const randomItem = new RandomItem();
+    const randomCaseItem = new RandomCaseItem();
     const type = randomCaseItem.getRandomType();
     const item = randomItem.getItemFromCaseByType(
       props.items,
