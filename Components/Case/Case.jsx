@@ -33,14 +33,14 @@ export default class Case extends Component {
       <Link
         href={`/container/` + this.props.id + `?type=${this.state.linkBase}`}
       >
-        <a className='case'>
+        <span className='case'>
           <Item
             inventoryStyles
             type={itemType.GREY}
             image={this.props.img}
             weapon={this.props.title}
           />
-        </a>
+        </span>
       </Link>
     );
   }

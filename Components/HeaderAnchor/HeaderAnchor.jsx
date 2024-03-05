@@ -6,9 +6,9 @@ export const HeaderAnchor = (props) => {
     <>
       <>
         <Link href={props.to}>
-          <a className='header-btn'>
+          <span className='header-btn'>
             <img src={props.icon} alt='' />
-          </a>
+          </span>
         </Link>
         {props.bordered && <hr className='header-btn__border' />}
       </>

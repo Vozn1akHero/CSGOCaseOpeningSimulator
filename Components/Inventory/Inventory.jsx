@@ -5,7 +5,7 @@ import { InventoryButton } from "../InventoryButton/InventoryButton";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { containerType } from "../../helpers/container-type";
 //import cases from "../../public/cases.json";
-import { Souvenir } from "../../public/Souvenir.js";
+import { Souvenir } from "../../public/souvenir.js";
 import { Cases } from "../../public/cases.js";
 import ReceivedItems from "../ReceivedItems/ReceivedItems";
 
