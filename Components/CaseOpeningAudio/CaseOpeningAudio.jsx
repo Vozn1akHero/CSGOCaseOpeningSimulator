@@ -30,18 +30,18 @@ export default class CaseOpeningAudio extends Component {
 
     this.rollSound.current.play();
     setTimeout(() => {
-      this.rollSound2.current.play();
+      this.rollSound2?.current?.play();
     }, (12.5 * this.context.caseOpeningTime) / 100);
 
     setTimeout(() => {
-      this.rollSound2.current.pause();
-      this.rollSound.current.playbackRate = 1;
+      this.rollSound2?.current?.pause();
+      if (this.rollSound.current) this.rollSound.current.playbackRate = 1;
     }, (50 * this.context.caseOpeningTime) / 100);
     setTimeout(() => {
-      this.rollSound.current.playbackRate = 0.9;
+      if (this.rollSound.current) this.rollSound.current.playbackRate = 0.9;
     }, (75 * this.context.caseOpeningTime) / 100);
     setTimeout(() => {
-      this.rollSound.current.pause();
+      this.rollSound?.current?.pause();
     }, this.context.caseOpeningTime);
   };
 

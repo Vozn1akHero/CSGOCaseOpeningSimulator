@@ -7,7 +7,9 @@ import { containerType } from "../../helpers/container-type";
 //import cases from "../../public/cases.json";
 import { Souvenir } from "../../public/souvenir.js";
 import { Cases } from "../../public/cases.js";
+import { Capsules } from "../../public/capsules";
 import ReceivedItems from "../ReceivedItems/ReceivedItems";
+import { capitalizeFirstLetter } from "../../public/scripts/string-utils";
 
 export default class Inventory extends Component {
   constructor(props) {
@@ -17,6 +19,8 @@ export default class Inventory extends Component {
       chosenSection: 1,
       currentPage: 1,
       containerType: containerType[0],
+      capsules: Capsules,
+      souvenirs: Souvenir,
     };
   }
 
@@ -29,18 +33,9 @@ export default class Inventory extends Component {
   }
 
   changeContainerType = (index) => {
-    if (!this.state.souvenirs) {
-      if (containerType[1].id === containerType[index].id) {
-        this.setState({
-          souvenirs: Souvenir,
-          containerType: containerType[index],
-        });
-      }
-    } else {
-      this.setState({
-        containerType: containerType[index],
-      });
-    }
+    this.setState({
+      containerType: containerType[index],
+    });
   };
 
   render() {
@@ -69,11 +64,11 @@ export default class Inventory extends Component {
         <div className={styles.ddWrap}>
           <Dropdown
             title='Type'
-            options={[...containerType.map((value) => value.title)]}
+            options={[...containerType.map((value) => capitalizeFirstLetter(value.title))]}
             onOptionClick={(index) => {
               this.changeContainerType(index);
             }}
-            chosenOption={this.state.containerType.title}
+            chosenOption={capitalizeFirstLetter(this.state.containerType.title)}
           />
         </div>
         <div className={styles.listWrap}>
@@ -89,6 +84,12 @@ export default class Inventory extends Component {
                 <CaseList
                   chosenType={this.state.containerType}
                   items={this.state.souvenirs}
+                />
+              )}
+              {this.state.containerType === containerType[2] && (
+                <CaseList
+                  chosenType={this.state.containerType}
+                  items={this.state.capsules}
                 />
               )}
             </>

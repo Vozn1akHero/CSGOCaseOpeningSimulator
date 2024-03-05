@@ -24,7 +24,7 @@ export default class Showcase extends Component {
             <Item
               type={itemType.GOLD}
               image={"/images/specialitem1.png"}
-              weapon={"★ Rare special item ★"}
+              weapon={"★ Rare Special Item ★"}
             />
           )}
         </div>

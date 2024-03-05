@@ -9,6 +9,7 @@ import ItemLine from "../ItemLine/ItemLine";
 import ReceivedItemModal from "../ReceivedItemModal/ReceivedItemModal";
 import { UnlockingContainerNotification } from "../UnlockingContainerNotification/UnlockingContainerNotification";
 import RandomCaseItem from "./RandomCaseItem";
+import RandomCapsule from "./RandomCapsule";
 import RandomItem from "./RandomItem";
 import RandomSouvenir from "./RandomSouvenir";
 import { itemType } from "../../helpers/item-type";
@@ -58,7 +59,6 @@ export const CaseOpeningSec = (props) => {
         {
           item = selectRandomItem();
           if (item.type === itemType.GOLD && index !== ActItemIndex) {
-            console.log("got knife")
             return generateItem(index);
           }
           break;
@@ -66,16 +66,15 @@ export const CaseOpeningSec = (props) => {
       case containerType[1]:
         item = selectRandomSouvenir();
         break;
-      // default:
-      //   item = selectRandomItem();
-      //   break;
+      case containerType[2]:
+        item = selectRandomSticker();
+        break;
     }
     return item;
   };
 
-  const generateLine = () => {
+  const generateLine = (actItem) => {
     let elements = [];
-    let actItem = generateItem(ActItemIndex);
     for (let index = 0; index < 30; index++) {
       if (index === ActItemIndex) {
         elements.push(actItem);
@@ -83,8 +82,6 @@ export const CaseOpeningSec = (props) => {
         elements.push(generateItem(index));
       }
     }
-    setReceivedItem(actItem);
-    Storage.saveReceivedItem(actItem);
     return <ItemLine items={elements} />;
   };
 
@@ -95,6 +92,7 @@ export const CaseOpeningSec = (props) => {
     const item = randomItem.getSouvenirItemByType(props.items, type);
     return item;
   };
+
   const selectRandomItem = () => {
     const randomItem = new RandomItem();
     const randomCaseItem = new RandomCaseItem();
@@ -106,8 +104,20 @@ export const CaseOpeningSec = (props) => {
     );
     return item;
   };
+
+  const selectRandomSticker = () => {
+    const randomItem = new RandomItem();
+    const randomCapsule = new RandomCapsule();
+    const type = randomCapsule.getRandomWithoutRed(); // todo: remaining rarity
+    const item = randomItem.getStickerByType(props.items, type);
+    return item;
+  }
+
   const openCase = () => {
-    setLine(generateLine());
+    const actItem = generateItem(ActItemIndex);
+    setLine(generateLine(actItem));
+    setReceivedItem(actItem);
+    Storage.saveReceivedItem(actItem);
     setOpeningInProgress(true);
     setTimeout(() => {
       setReceivedItemModalVisible(true);

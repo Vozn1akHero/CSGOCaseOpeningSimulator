@@ -27,6 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     "helpers/chance.js",
-    "public/knives.js"
+    "public/knives.js",
+    "Components/ItemLine/ItemLine.jsx"
   ]
 }

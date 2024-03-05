@@ -86,9 +86,8 @@ export default class Item extends Component {
             modalInfoVisible: false,
           });
         }}
-        className={`${styles.item} ${
-          this.props.inventoryStyles && styles.item_inInventory
-        }`}
+        className={`${styles.item} ${this.props.inventoryStyles && styles.item_inInventory
+          }`}
       >
         {this.state.modalInfoVisible && this.props.withModalInfo && (
           <div className={styles.modalInfo}>
@@ -114,9 +113,8 @@ export default class Item extends Component {
         <div className={styles.imageWrap}>
           <img
             src={this.props.image}
-            className={`${styles.img} ${
-              this.props.inventoryStyles && styles.img_inInventory
-            }`}
+            className={`${styles.img} ${this.props.inventoryStyles && styles.img_inInventory
+              }`}
             alt=''
           />
         </div>

@@ -5,9 +5,9 @@ import { Layout } from "../../Components/Layout/Layout.jsx";
 import Showcase from "../../Components/Showcase/Showcase.jsx";
 import { containerType } from "../../helpers/container-type.js";
 import { Cases } from "../../public/cases.js";
-// import cases from "../../public/cases.json";
 import { Souvenir } from "../../public/souvenir.js";
 import { CenteredWrapper } from "../../Components/CenteredWrapper/CenteredWrapper.jsx";
+import { Capsules } from "../../public/capsules.js";
 
 const Container = () => {
   const router = useRouter();
@@ -17,12 +17,15 @@ const Container = () => {
   const [chosenContainerType, setChosenContainerType] = useState(null);
 
   useEffect(() => {
+    const caseType = containerType[0];
+    const souvenirType = containerType[1];
+    const capsuleType = containerType[2];
+
     if (router && router.query && router.query.id) {
       const type = router.query.type;
       switch (type) {
-        case "case": {
-          setChosenContainerType(containerType[0]);
-
+        case caseType.title: {
+          setChosenContainerType(caseType);
           const { title, image, items, specialItems } = Cases.find(
             (value) => value.id === +router.query.id
           );
@@ -34,8 +37,8 @@ const Container = () => {
           setSpecialItems(specialItems);
           break;
         }
-        case "souvenir": {
-          setChosenContainerType(containerType[1]);
+        case souvenirType.title: {
+          setChosenContainerType(souvenirType);
           const { title, image, items } = Souvenir.find(
             (value) => value.id === +router.query.id
           );
@@ -46,9 +49,9 @@ const Container = () => {
           setItems(items);
           break;
         }
-        default: {
-          setChosenContainerType(containerType[0]);
-          const { title, image, items, specialItems } = Cases.find(
+        case capsuleType.title: {
+          setChosenContainerType(capsuleType);
+          const { title, image, items } = Capsules.find(
             (value) => value.id === +router.query.id
           );
           setContainerInfo({
@@ -56,8 +59,10 @@ const Container = () => {
             image,
           });
           setItems(items);
-          setSpecialItems(specialItems);
           break;
+        }
+        default: {
+          throw "undefined container type"
         }
       }
     }
@@ -67,24 +72,13 @@ const Container = () => {
     <Layout
       content={
         <CenteredWrapper>
-          <div className='head-wrap'></div>
-          {chosenContainerType === containerType[0] &&
-            items &&
-            specialItems && (
-              <CaseOpeningSec
-                items={items}
-                containerType={containerType[0]}
-                caseTitle={containerInfo.title}
-                caseImage={containerInfo.image}
-                specialItems={specialItems}
-              />
-            )}
-          {chosenContainerType === containerType[1] && items && (
+          {items && chosenContainerType && (
             <CaseOpeningSec
               items={items}
-              containerType={containerType[1]}
+              containerType={chosenContainerType}
               caseTitle={containerInfo.title}
               caseImage={containerInfo.image}
+              specialItems={specialItems}
             />
           )}
           {items && (
@@ -93,13 +87,6 @@ const Container = () => {
               items={items}
             />
           )}
-          <style jsx>
-            {`
-              .head-wrap {
-                background: #121b24;
-              }
-            `}
-          </style>
         </CenteredWrapper>
       }
     />

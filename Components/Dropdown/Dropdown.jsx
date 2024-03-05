@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Dropdown.module.scss";
-
 export const Dropdown = (props) => {
   const [optionsVisible, setOptionsVisible] = useState(false);
   const onOptionClick = (index) => {

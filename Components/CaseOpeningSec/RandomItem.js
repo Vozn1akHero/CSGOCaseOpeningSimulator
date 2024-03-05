@@ -8,6 +8,16 @@ import {
 } from "../../helpers/chance";
 
 export default class RandomItem {
+  getStickerByType = (items, type) => {
+    if (items == null || type == null) throw new Error();
+    const allGroupItems = [...items.filter((val) => val.type === type)];
+    const ran = getRandomInt(0, allGroupItems.length);
+    const item = allGroupItems[ran];
+    return {
+      ...item
+    };
+  }
+
   getSouvenirItemByType = (items, type) => {
     if (items == null || type == null) throw new Error();
     const allGroupItems = [...items.filter((val) => val.type === type)];

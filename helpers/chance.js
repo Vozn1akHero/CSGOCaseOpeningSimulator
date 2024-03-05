@@ -32,3 +32,9 @@ export const QualityChance = {
   MINIMALWEAR: 0.91,
   FACTORYNEW: 1,
 };
+
+export const CapsuleWithoutRedChance = {
+  BLUE: 0.8,
+  PURPLE: 0.96,
+  PINK: 1,
+}

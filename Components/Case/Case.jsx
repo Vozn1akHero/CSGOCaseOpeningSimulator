@@ -8,24 +8,26 @@ import { containerType } from "../../helpers/container-type";
 export default class Case extends Component {
   constructor(props) {
     super(props);
-    switch (this.props.chosenType) {
-      case containerType[0]:
-        this.state = {
-          linkBase: "case",
-        };
-        break;
-
-      case containerType[1]:
-        this.state = {
-          linkBase: "souvenir",
-        };
-        break;
-      default:
-        this.state = {
-          linkBase: "case",
-        };
-        break;
-    }
+    // switch (this.props.chosenType) {
+    //   case containerType[0]:
+    //     this.state = {
+    //       linkBase: "case",
+    //     };
+    //     break;
+    //   case containerType[1]:
+    //     this.state = {
+    //       linkBase: "souvenir",
+    //     };
+    //     break;
+    //   default:
+    //     this.state = {
+    //       linkBase: "case",
+    //     };
+    //     break;
+    // }
+    this.state = {
+      linkBase: this.props.chosenType.title,
+    };
   }
 
   render() {
@@ -33,14 +35,12 @@ export default class Case extends Component {
       <Link
         href={`/container/` + this.props.id + `?type=${this.state.linkBase}`}
       >
-        <span className='case'>
-          <Item
-            inventoryStyles
-            type={itemType.GREY}
-            image={this.props.img}
-            weapon={this.props.title}
-          />
-        </span>
+        <Item
+          inventoryStyles
+          type={itemType.GREY}
+          image={this.props.img}
+          weapon={this.props.title}
+        />
       </Link>
     );
   }
