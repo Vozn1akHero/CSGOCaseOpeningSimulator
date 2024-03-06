@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Item from "../Item/Item";
 import styled, { css } from "styled-components";
 import { getSlider } from "./keyframes";
-import { itemType } from "../../helpers/item-type";
+import { itemType } from "../../public/scripts/drop/item-type";
 import { SettingsContext } from "../../contexts/SettingsContext";
 
 const Animation = styled.div`

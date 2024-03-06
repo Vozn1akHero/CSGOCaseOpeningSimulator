@@ -1,4 +1,4 @@
-import { Quality } from "./quality";
+import { Quality } from "../drop/quality";
 
 export default class Storage {
   static identifier = "receivedItems";

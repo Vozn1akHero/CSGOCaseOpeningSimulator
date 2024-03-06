@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { GreenButton } from "../GreenButton/GreenButton";
 import styles from "./ReceivedItemModal.module.scss";
 import { SettingsContext } from "../../contexts/SettingsContext";
-import { itemType } from "../../helpers/item-type";
+import { itemType } from "../../public/scripts/drop/item-type";
 
 export default class ReceivedItemModal extends Component {
   static contextType = SettingsContext;

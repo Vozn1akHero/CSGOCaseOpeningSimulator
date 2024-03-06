@@ -1,18 +1,18 @@
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
-import { containerType } from "../../helpers/container-type";
-import Storage from "../../helpers/storage";
+import { containerType } from "../../public/scripts/drop/container-type";
+import Storage from "../../public/scripts/utils/storage";
 import CaseOpeningAudio from "../CaseOpeningAudio/CaseOpeningAudio";
 import { CaseOpeningConfirmation } from "../CaseOpeningConfirmation/CaseOpeningConfirmation";
 import ItemLine from "../ItemLine/ItemLine";
 import ReceivedItemModal from "../ReceivedItemModal/ReceivedItemModal";
 import { UnlockingContainerNotification } from "../UnlockingContainerNotification/UnlockingContainerNotification";
-import RandomCaseItem from "./RandomCaseItem";
-import RandomCapsule from "./RandomCapsule";
-import RandomItem from "./RandomItem";
-import RandomSouvenir from "./RandomSouvenir";
-import { itemType } from "../../helpers/item-type";
+import RandomCaseItem from "../../public/scripts/drop/RandomCaseItem";
+import RandomCapsule from "../../public/scripts/drop/RandomCapsule";
+import RandomItem from "../../public/scripts/drop/RandomItem";
+import RandomSouvenir from "../../public/scripts/drop/RandomSouvenir";
+import { itemType } from "../../public/scripts/drop/item-type";
 
 export const CaseOpeningSec = (props) => {
   const context = useContext(SettingsContext);
@@ -23,9 +23,9 @@ export const CaseOpeningSec = (props) => {
   );
   const [receivedItem, setReceivedItem] = useState(null);
   const router = useRouter();
-  const ActItemIndex = 25;
+  const ActItemIndex = 25, ItemsInLine = 30;
   const [cancellationRequested, setCancellationRequested] = useState(false)
-  //const [autoOpenedCount, setAutoOpenedCount] = useState(0)
+  const [autoOpenedCount, setAutoOpenedCount] = useState(0)
 
   useEffect(() => {
     document.addEventListener("keydown", handleQuickOpen)
@@ -36,13 +36,20 @@ export const CaseOpeningSec = (props) => {
   }, [])
 
   // useEffect(() => {
+  //   if (autoOpenedCount === 100) return;
+
   //   if (receivedItemModalVisible) {
-  //     const tryAgainBtn = document.getElementById("tryAgainBtn")
-  //     tryAgainBtn?.click();
   //     setTimeout(() => {
-  //       const unlockBtn = document.getElementById("unlockBtn")
-  //       unlockBtn?.click();
-  //     }, 500);
+  //       setAutoOpenedCount(autoOpenedCount + 1);
+
+  //       const tryAgainBtn = document.getElementById("tryAgainBtn")
+  //       tryAgainBtn?.click();
+
+  //       setTimeout(() => {
+  //         const unlockBtn = document.getElementById("unlockBtn")
+  //         unlockBtn?.click();
+  //       }, 200);
+  //     }, 200);
   //   }
   // }, [receivedItemModalVisible])
 
@@ -73,16 +80,21 @@ export const CaseOpeningSec = (props) => {
     return item;
   };
 
-  const generateLine = (actItem) => {
-    let elements = [];
-    for (let index = 0; index < 30; index++) {
+  const generateItems = (actItem) => {
+    let items = [];
+    for (let index = 0; index < ItemsInLine; index++) {
       if (index === ActItemIndex) {
-        elements.push(actItem);
+        items.push(actItem);
       } else {
-        elements.push(generateItem(index));
+        items.push(generateItem(index));
       }
     }
-    return <ItemLine items={elements} />;
+    return items;
+  }
+
+  const generateLine = (actItem) => {
+    const items = generateItems(actItem);
+    return <ItemLine items={items} />;
   };
 
   const selectRandomSouvenir = () => {
@@ -113,15 +125,29 @@ export const CaseOpeningSec = (props) => {
     return item;
   }
 
+  /*  const testKnife = () => {
+     for (let i = 0; i < 200; i++) {
+       let actItem = generateItem(ActItemIndex);
+       let itemsLine = generateLine(actItem);
+ 
+       if (actItem.type === 6) {
+         console.log(actItem)
+         console.log(i)
+         break;
+       }
+     }
+   } */
+
   const openCase = () => {
     const actItem = generateItem(ActItemIndex);
-    setLine(generateLine(actItem));
+    const itemsLine = generateLine(actItem);
+    setLine(itemsLine);
     setReceivedItem(actItem);
     Storage.saveReceivedItem(actItem);
     setOpeningInProgress(true);
     setTimeout(() => {
       setReceivedItemModalVisible(true);
-    }, context.caseOpeningTime + 100);
+    }, context.caseOpeningTime);
   };
   const onReceivedItemConfirmation = () => {
     router.push("/");

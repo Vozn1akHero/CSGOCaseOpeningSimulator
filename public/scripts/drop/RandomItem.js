@@ -1,11 +1,11 @@
-import { itemType } from "../../helpers/item-type";
-import { Quality } from "../../helpers/quality";
-import { getRandomInt } from "../../helpers/random";
+import { itemType } from "./item-type";
+import { Quality } from "./quality";
+import { getRandomInt } from "../utils/random";
 import {
   ItemChance,
   ItemStatrakChance,
   QualityChance,
-} from "../../helpers/chance";
+} from "./chance";
 
 export default class RandomItem {
   getStickerByType = (items, type) => {

@@ -3,13 +3,13 @@ import CaseList from "../CaseList/CaseList";
 import styles from "./Inventory.module.scss";
 import { InventoryButton } from "../InventoryButton/InventoryButton";
 import { Dropdown } from "../Dropdown/Dropdown";
-import { containerType } from "../../helpers/container-type";
+import { containerType } from "../../public/scripts/drop/container-type";
 //import cases from "../../public/cases.json";
-import { Souvenir } from "../../public/souvenir.js";
-import { Cases } from "../../public/cases.js";
-import { Capsules } from "../../public/capsules";
+import { Souvenir } from "../../public/data/souvenir.js";
+import { Cases } from "../../public/data/cases.js";
+import { Capsules } from "../../public/data/capsules";
 import ReceivedItems from "../ReceivedItems/ReceivedItems";
-import { capitalizeFirstLetter } from "../../public/scripts/string-utils";
+import { capitalizeFirstLetter } from "../../public/scripts/utils/string-utils";
 
 export default class Inventory extends Component {
   constructor(props) {

@@ -15,7 +15,7 @@ export const CenteredWrapper = (props) => {
           .centered-wrapper .m-sec {
             box-shadow: 0px 0px 11px 1px rgba(0, 0, 0, 0.75);
             height: 85vh;
-            width: 70vw;
+            width: max(70vw, 1030px);
             background: #333b42;
           }
         `}

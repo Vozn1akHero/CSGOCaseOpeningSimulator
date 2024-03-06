@@ -2,8 +2,8 @@ import "./case.module.scss";
 import Link from "next/link";
 import Item from "../Item/Item";
 import React, { Component } from "react";
-import { itemType } from "../../helpers/item-type";
-import { containerType } from "../../helpers/container-type";
+import { itemType } from "../../public/scripts/drop/item-type";
+import { containerType } from "../../public/scripts/drop/container-type";
 
 export default class Case extends Component {
   constructor(props) {

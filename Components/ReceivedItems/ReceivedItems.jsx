@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Storage from "../../helpers/storage";
+import Storage from "../../public/scripts/utils/storage";
 import Item from "../Item/Item";
 import ScrollableList from "../ScrollableList/ScrollableList";
 

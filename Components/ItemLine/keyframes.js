@@ -1,5 +1,5 @@
 import { keyframes } from "styled-components";
-import { getRandomInt } from "../../helpers/random";
+import { getRandomInt } from "../../public/scripts/utils/random";
 
 export const getSlider = () => {
   const pos = getRandomInt(2978, 3104);

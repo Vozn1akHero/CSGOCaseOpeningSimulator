@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CaseOpeningConfirmation.module.scss";
 import Item from "../Item/Item";
 import { GreenButton } from "../GreenButton/GreenButton";
-import { itemType } from "../../helpers/item-type";
+import { itemType } from "../../public/scripts/drop/item-type";
 export const CaseOpeningConfirmation = (props) => {
   return (
     <div className={styles.caseOpeningConfirmation}>

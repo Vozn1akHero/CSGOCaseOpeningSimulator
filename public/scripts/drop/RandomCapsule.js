@@ -1,5 +1,5 @@
-import { CapsuleWithoutRedChance } from "../../helpers/chance";
-import { itemType } from "../../helpers/item-type";
+import { CapsuleWithoutRedChance } from "./chance";
+import { itemType } from "./item-type";
 
 export default class RandomCapsule {
     getRandomWithoutRed = () => {

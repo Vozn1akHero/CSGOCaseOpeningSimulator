@@ -1,5 +1,5 @@
 import { Knives } from "./knives";
-import { Quality } from "../helpers/quality";
+import { Quality } from "../scripts/drop/quality";
 
 export const Cases = [
   {

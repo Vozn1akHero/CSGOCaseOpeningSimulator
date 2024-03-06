@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./item.module.scss";
-import { itemType } from "../../helpers/item-type";
-import { Quality } from "../../helpers/quality";
+import { itemType } from "../../public/scripts/drop/item-type";
+import { Quality } from "../../public/scripts/drop/quality";
 
 export default class Item extends Component {
   constructor(props) {

@@ -26,8 +26,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "helpers/chance.js",
-    "public/knives.js",
+    "public/scripts/drop/chance.js",
+    "public/data/knives.js",
     "Components/ItemLine/ItemLine.jsx"
   ]
 }

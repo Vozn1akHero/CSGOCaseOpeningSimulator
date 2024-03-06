@@ -1,4 +1,4 @@
-import { Quality } from "../helpers/quality";
+import { Quality } from "../scripts/drop/quality";
 
 export const Knives = {
   1: {

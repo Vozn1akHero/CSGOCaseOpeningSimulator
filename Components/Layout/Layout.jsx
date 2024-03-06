@@ -12,10 +12,10 @@ export const Layout = (props) => {
           {`
             .layout {
               background-image: url("/images/csgomenubg.jpg");
-              width: 100vw;
-              height: 100vh;
+              min-height: 100vh;
               background-size: cover;
               background-repeat: no-repeat;
+              min-width: 1200px;
             }
 
             main {

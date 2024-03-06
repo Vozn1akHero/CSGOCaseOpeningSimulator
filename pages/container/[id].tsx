@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { CaseOpeningSec } from "../../Components/CaseOpeningSec/CaseOpeningSec.jsx";
 import { Layout } from "../../Components/Layout/Layout.jsx";
 import Showcase from "../../Components/Showcase/Showcase.jsx";
-import { containerType } from "../../helpers/container-type.js";
-import { Cases } from "../../public/cases.js";
-import { Souvenir } from "../../public/souvenir.js";
+import { containerType } from "../../public/scripts/drop/container-type.js";
+import { Cases } from "../../public/data/cases.js";
+import { Souvenir } from "../../public/data/souvenir.js";
 import { CenteredWrapper } from "../../Components/CenteredWrapper/CenteredWrapper.jsx";
-import { Capsules } from "../../public/capsules.js";
+import { Capsules } from "../../public/data/capsules.js";
 
 const Container = () => {
   const router = useRouter();

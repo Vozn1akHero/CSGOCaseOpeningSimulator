@@ -1,5 +1,5 @@
-import { ItemChance } from "../../helpers/chance";
-import { itemType } from "../../helpers/item-type";
+import { ItemChance } from "./chance";
+import { itemType } from "./item-type";
 
 export default class RandomCaseItem {
   getRandomType = () => {

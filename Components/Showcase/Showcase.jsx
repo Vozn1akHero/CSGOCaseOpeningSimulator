@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Item from "../Item/Item";
 import styles from "./showcase.module.scss";
-import { itemType } from "../../helpers/item-type";
+import { itemType } from "../../public/scripts/drop/item-type";
 export default class Showcase extends Component {
   render() {
     return (
