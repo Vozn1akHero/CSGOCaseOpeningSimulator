@@ -17,17 +17,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": "."
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
+    "./",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "public/scripts/drop/chance.js",
-    "public/data/knives.js",
-    "Components/ItemLine/ItemLine.jsx"
   ]
 }

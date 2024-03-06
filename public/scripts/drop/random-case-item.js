@@ -1,9 +1,10 @@
 import { ItemChance } from "./chance";
 import { itemType } from "./item-type";
+import { getRandomIntSecure } from "../utils/random";
 
 export default class RandomCaseItem {
   getRandomType = () => {
-    const ran = Math.random();
+    const ran = getRandomIntSecure();
     if (ran < ItemChance.BLUE) return itemType.BLUE;
     else if (ran < ItemChance.PURPLE) return itemType.PURPLE;
     else if (ran < ItemChance.PINK) return itemType.PINK;

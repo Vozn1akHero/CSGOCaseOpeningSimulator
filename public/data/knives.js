@@ -1,5 +1,12 @@
 import { Quality } from "../scripts/drop/quality";
 
+const allQualities = [
+  Quality["Battle-Scarred"],
+  Quality["Well-Worn"],
+  Quality["Minimal Wear"],
+  Quality["Factory New"],
+]
+
 export const Knives = {
   1: {
     id: 1,
@@ -71,12 +78,7 @@ export const Knives = {
       weapon: "★ Karambit",
       skin: "Case Hardened",
       image: "/images/defaultknives/karambitcasehardened.png",
-      quality: [
-        Quality["Battle-Scarred"],
-        Quality["Well-Worn"],
-        Quality["Minimal Wear"],
-        Quality["Factory New"],
-      ],
+      quality: allQualities,
       type: 6,
     },
     {
@@ -84,12 +86,7 @@ export const Knives = {
       weapon: "★ Bayonet",
       skin: "Case Hardened",
       image: "/images/defaultknives/bayonetcasehardened.png",
-      quality: [
-        Quality["Battle-Scarred"],
-        Quality["Well-Worn"],
-        Quality["Minimal Wear"],
-        Quality["Factory New"],
-      ],
+      quality: allQualities,
       type: 6,
     },
   ],

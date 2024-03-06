@@ -8,10 +8,10 @@ import { CaseOpeningConfirmation } from "../CaseOpeningConfirmation/CaseOpeningC
 import ItemLine from "../ItemLine/ItemLine";
 import ReceivedItemModal from "../ReceivedItemModal/ReceivedItemModal";
 import { UnlockingContainerNotification } from "../UnlockingContainerNotification/UnlockingContainerNotification";
-import RandomCaseItem from "../../public/scripts/drop/RandomCaseItem";
-import RandomCapsule from "../../public/scripts/drop/RandomCapsule";
-import RandomItem from "../../public/scripts/drop/RandomItem";
-import RandomSouvenir from "../../public/scripts/drop/RandomSouvenir";
+import RandomCaseItem from "../../public/scripts/drop/random-case-item";
+import RandomCapsule from "../../public/scripts/drop/random-capsule";
+import RandomItem from "../../public/scripts/drop/random-item";
+import RandomSouvenir from "../../public/scripts/drop/random-souvenir";
 import { itemType } from "../../public/scripts/drop/item-type";
 
 export const CaseOpeningSec = (props) => {

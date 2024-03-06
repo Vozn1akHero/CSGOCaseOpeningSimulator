@@ -6,6 +6,7 @@ import {
   ItemStatrakChance,
   QualityChance,
 } from "./chance";
+import { getRandomIntSecure } from "../utils/random";
 
 export default class RandomItem {
   getStickerByType = (items, type) => {
@@ -55,7 +56,7 @@ export default class RandomItem {
 
   getRandomStatrakByItemType = (type) => {
     if (!type) throw new Error();
-    const ran = Math.random();
+    const ran = getRandomIntSecure();
     if (ran < ItemStatrakChance.BLUE && type == itemType.BLUE) return true;
     else if (ran < ItemStatrakChance.PURPLE && type == itemType.PURPLE)
       return true;
@@ -67,7 +68,7 @@ export default class RandomItem {
 
   getRandomQuality = (item) => {
     if (!item) throw new Error();
-    const ran = Math.random();
+    const ran = getRandomIntSecure();
     if (
       (!item.quality ||
         item.quality.indexOf(Quality["Battle-Scarred"]) !== -1) &&

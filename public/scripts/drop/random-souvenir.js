@@ -1,10 +1,11 @@
 import { itemType } from "./item-type";
 import { ItemChance } from "./chance";
+import { getRandomIntSecure } from "../utils/random";
 
 export default class RandomSouvenir {
   getRandomSouvenirTypeByItems = (items) => {
     if (!items) throw Error();
-    const ran = Math.random();
+    const ran = getRandomIntSecure();
     if (items.some((e) => e.type == itemType.GREY) && ran < ItemChance.GREY)
       return itemType.GREY;
     else if (
