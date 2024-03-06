@@ -5,7 +5,7 @@ import { Layout } from "../../Components/Layout/Layout.jsx";
 import Showcase from "../../Components/Showcase/Showcase.jsx";
 import { containerType } from "../../public/scripts/drop/container-type.js";
 import { Cases } from "../../public/data/cases/cases.js";
-import { Souvenir } from "../../public/data/souvenir.js";
+import { Souvenir } from "../../public/data/souvenirs/souvenir.js";
 import { CenteredWrapper } from "../../Components/CenteredWrapper/CenteredWrapper.jsx";
 import { Capsules } from "../../public/data/capsules/capsules.js";
 
@@ -17,15 +17,11 @@ const Container = () => {
   const [chosenContainerType, setChosenContainerType] = useState(null);
 
   useEffect(() => {
-    const caseType = containerType[0];
-    const souvenirType = containerType[1];
-    const capsuleType = containerType[2];
-
     if (router && router.query && router.query.id) {
-      const type = router.query.type;
+      const type = +router.query.type;
       switch (type) {
-        case caseType.title: {
-          setChosenContainerType(caseType);
+        case containerType.CASE: {
+          setChosenContainerType(containerType.CASE);
           const { title, image, imageUrl, items, specialItems } = Cases.find(
             (value) => value.id === +router.query.id
           );
@@ -38,8 +34,8 @@ const Container = () => {
           setSpecialItems(specialItems);
           break;
         }
-        case souvenirType.title: {
-          setChosenContainerType(souvenirType);
+        case containerType.SOUVENIR: {
+          setChosenContainerType(containerType.SOUVENIR);
           const { title, image, imageUrl, items } = Souvenir.find(
             (value) => value.id === +router.query.id
           );
@@ -51,9 +47,8 @@ const Container = () => {
           setItems(items);
           break;
         }
-        case capsuleType.title: {
-          setChosenContainerType(capsuleType);
-          console.log(Capsules)
+        case containerType.CAPSULE: {
+          setChosenContainerType(containerType.CAPSULE);
           const { title, image, imageUrl, items } = Capsules.find(
             (value) => value.id === +router.query.id
           );
@@ -88,7 +83,7 @@ const Container = () => {
           )}
           {items && (
             <Showcase
-              baseContainerType={chosenContainerType === containerType[0]}
+              baseContainerType={chosenContainerType === containerType.CASE}
               items={items}
             />
           )}

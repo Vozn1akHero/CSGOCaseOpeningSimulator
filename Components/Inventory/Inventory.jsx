@@ -5,22 +5,24 @@ import { InventoryButton } from "../InventoryButton/InventoryButton";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { containerType } from "../../public/scripts/drop/container-type";
 //import cases from "../../public/cases.json";
-import { Souvenir } from "../../public/data/souvenir.js";
+import { Souvenir } from "../../public/data/souvenirs/souvenir.js";
 import { Cases } from "../../public/data/cases/cases.js";
 import { Capsules } from "../../public/data/capsules/capsules";
 import ReceivedItems from "../ReceivedItems/ReceivedItems";
 import { capitalizeFirstLetter } from "../../public/scripts/utils/string-utils";
+import ScrollableList from "Components/ScrollableList/ScrollableList";
+import Case from "Components/Case/Case";
 
 export default class Inventory extends Component {
   constructor(props) {
     super(props);
+    const allItems = [Cases, Souvenir, Capsules].flat();
     this.state = {
-      cases: Cases,
+      allItems,
       chosenSection: 1,
       currentPage: 1,
-      containerType: containerType[0],
-      capsules: Capsules,
-      souvenirs: Souvenir,
+      containerType: containerType.ALL,
+      visibleItems: allItems
     };
   }
 
@@ -34,9 +36,34 @@ export default class Inventory extends Component {
 
   changeContainerType = (index) => {
     this.setState({
-      containerType: containerType[index],
+      containerType: containerType[Object.keys(containerType)[index]],
+    }, () => {
+      this.onContainerTypeChanged();
     });
   };
+
+  onContainerTypeChanged = () => {
+    if (this.state.containerType === containerType.ALL) {
+      this.setState({
+        visibleItems: this.state.allItems
+      })
+    }
+    else if (this.state.containerType === containerType.CASE) {
+      this.setState({
+        visibleItems: Cases
+      })
+    }
+    else if (this.state.containerType === containerType.SOUVENIR) {
+      this.setState({
+        visibleItems: Souvenir
+      })
+    }
+    else if (this.state.containerType === containerType.CAPSULE) {
+      this.setState({
+        visibleItems: Capsules
+      })
+    }
+  }
 
   render() {
     return (
@@ -49,7 +76,7 @@ export default class Inventory extends Component {
               });
             }}
             active={this.state.chosenSection === 1}
-            text='Cases'
+            text='Containers'
           />
           <InventoryButton
             onClick={() => {
@@ -61,39 +88,33 @@ export default class Inventory extends Component {
             text='Items'
           />
         </div>
-        <div className={styles.ddWrap}>
-          <Dropdown
-            title='Type'
-            options={[...containerType.map((value) => capitalizeFirstLetter(value.title))]}
-            onOptionClick={(index) => {
-              this.changeContainerType(index);
-            }}
-            chosenOption={capitalizeFirstLetter(this.state.containerType.title)}
-          />
-        </div>
+        {this.state.chosenSection === 1 &&
+          <div className={styles.ddWrap}>
+            <Dropdown
+              title='Type'
+              options={[...Object.entries(containerType).map((value) => capitalizeFirstLetter(value[0]))]}
+              onOptionClick={(index) => {
+                this.changeContainerType(index);
+              }}
+              chosenOption={capitalizeFirstLetter(Object.entries(containerType)[this.state.containerType][0])}
+            />
+          </div>
+        }
         <div className={styles.listWrap}>
-          {this.state.chosenSection === 1 && (
-            <>
-              {this.state.containerType === containerType[0] && (
-                <CaseList
-                  chosenType={this.state.containerType}
-                  items={this.state.cases}
+          {this.state.chosenSection === 1 &&
+            <ScrollableList>
+              {this.state.visibleItems.map((value, index) => (
+                <Case
+                  containerType={value.containerType}
+                  key={index}
+                  id={value.id}
+                  title={value.title}
+                  img={value.image}
+                  imageUrl={value.imageUrl}
                 />
-              )}
-              {this.state.containerType === containerType[1] && (
-                <CaseList
-                  chosenType={this.state.containerType}
-                  items={this.state.souvenirs}
-                />
-              )}
-              {this.state.containerType === containerType[2] && (
-                <CaseList
-                  chosenType={this.state.containerType}
-                  items={this.state.capsules}
-                />
-              )}
-            </>
-          )}
+              ))}
+            </ScrollableList>
+          }
           {this.state.chosenSection === 2 && <ReceivedItems />}
         </div>
       </div>

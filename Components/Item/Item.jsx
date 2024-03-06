@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from "./item.module.scss";
 import { itemType } from "../../public/scripts/drop/item-type";
-import { Quality } from "../../public/scripts/drop/quality";
 
 export default class Item extends Component {
   constructor(props) {
@@ -111,7 +110,7 @@ export default class Item extends Component {
         )}
 
         <div className={styles.imageWrap}>
-          <img
+          <img draggable={false}
             src={this.props.imageUrl ? this.props.imageUrl : this.props.imageLocalPath}
             className={`${styles.img} ${this.props.inventoryStyles && styles.img_inInventory
               }`}

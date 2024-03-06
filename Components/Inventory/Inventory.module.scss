@@ -16,14 +16,14 @@
   }
 
   .ddWrap {
-    height: 7%;
     box-sizing: border-box;
     width: 100%;
     display: flex;
     justify-content: flex-end;
     background: #2f4153;
     padding: 0.5rem 0;
-    & > div {
+
+    &>div {
       transform: translateX(-18px);
     }
   }

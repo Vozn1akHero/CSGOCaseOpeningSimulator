@@ -5,7 +5,7 @@ export const SettingsContext = createContext();
 export default class SettingsContextProvider extends Component {
   state = {
     volume: 0.05,
-    caseOpeningTime: 3000,
+    caseOpeningTime: 500,
   };
   render() {
     return (

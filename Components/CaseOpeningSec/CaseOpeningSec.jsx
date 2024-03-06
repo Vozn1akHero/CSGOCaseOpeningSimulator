@@ -62,7 +62,7 @@ export const CaseOpeningSec = (props) => {
   const generateItem = (index) => {
     let item;
     switch (props.containerType) {
-      case containerType[0]:
+      case containerType.CASE:
         {
           item = selectRandomItem();
           if (item.type === itemType.GOLD && index !== ActItemIndex) {
@@ -70,10 +70,10 @@ export const CaseOpeningSec = (props) => {
           }
           break;
         }
-      case containerType[1]:
+      case containerType.SOUVENIR:
         item = selectRandomSouvenir();
         break;
-      case containerType[2]:
+      case containerType.CAPSULE:
         item = selectRandomSticker();
         break;
     }

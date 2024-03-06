@@ -1,10 +1,12 @@
 import { Knives } from "../knives";
 import { Quality } from "../../scripts/drop/quality";
+import { containerType } from "public/scripts/drop/container-type";
 
 export const BravoCase = {
     id: 2,
     title: "Bravo Case",
-    imageUrl: "https://community.akamai.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsXE1xNwVDv7WrFA5pnabNJGwSuN3gxtnawKOlMO6HzzhQucAm0uvFo4n2iw3h_UM-ZmilJNeLMlhpjfjxEoE/360fx360f",
+    containerType: containerType.CASE,
+    image: "/images/cases/bravo-case/bravocase.webp",
     items: [
         {
             title: "SG 553 | Wave Spray",

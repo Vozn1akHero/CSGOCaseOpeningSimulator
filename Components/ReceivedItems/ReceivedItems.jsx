@@ -26,6 +26,7 @@ export default class ReceivedItems extends Component {
             weapon={value.weapon}
             quality={value.quality}
             skin={value.skin}
+            isStatrak={value.isStatrak}
           />
         ))}
       </ScrollableList>

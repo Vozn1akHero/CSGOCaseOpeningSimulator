@@ -6,6 +6,17 @@ import { itemType } from "../../public/scripts/drop/item-type";
 
 export default class ReceivedItemModal extends Component {
   static contextType = SettingsContext;
+  static receivedItemModalBgClassByType = {
+    [itemType.GREY]: styles.receivedItemModal_consumerGrade,
+    [itemType.LIGHTBLUE]: styles.receivedItemModal_lightBlue,
+    [itemType.BLUE]: styles.receivedItemModal_blue,
+    [itemType.PURPLE]: styles.receivedItemModal_purple,
+    [itemType.PINK]: styles.receivedItemModal_pink,
+    [itemType.RED]: styles.receivedItemModal_red,
+    [itemType.GOLD]: styles.receivedItemModal_special,
+    [itemType.GREY]: styles.receivedItemModal_consumerGrade,
+    [itemType.LIGHTBLUE]: styles.receivedItemModal_consumerGrade
+  }
 
   constructor(props) {
     super(props);
@@ -15,57 +26,9 @@ export default class ReceivedItemModal extends Component {
     this.caseOpeningAudioPinkDrop = React.createRef();
     this.caseOpeningAudioRedDrop = React.createRef();
 
-    switch (this.props.type) {
-      case itemType.GREY:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_consumerGrade,
-        };
-
-        break;
-      case itemType.LIGHTBLUE:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_lightBlue,
-        };
-
-        break;
-      case itemType.BLUE:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_blue,
-        };
-
-        break;
-      case itemType.PURPLE:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_purple,
-        };
-
-        break;
-      case itemType.PINK:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_pink,
-        };
-
-        break;
-      case itemType.RED:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_red,
-        };
-
-        break;
-      case itemType.GOLD:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_special,
-        };
-
-        break;
-      case itemType.GREY | itemType.LIGHTBLUE:
-        this.state = {
-          receivedItemModalBgClass: styles.receivedItemModal_consumerGrade,
-        };
-
-      default:
-        break;
-    }
+    this.state = {
+      receivedItemModalBgClass: ReceivedItemModal.receivedItemModalBgClassByType[this.props.type],
+    };
   }
 
   componentDidMount() {

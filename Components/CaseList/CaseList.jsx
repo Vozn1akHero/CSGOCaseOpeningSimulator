@@ -10,18 +10,12 @@ export default class CaseList extends Component {
     };
   }
 
-  // select = (page) => {
-  //   let firstIndex = (page - 1) * 30;
-  //   let lastIndex = firstIndex + 29;
-  //   return this.props.items.slice(firstIndex, lastIndex);
-  // };
-
   render() {
     return (
       <ScrollableList>
         {this.state.caseList.map((value, index) => (
           <Case
-            chosenType={this.props.chosenType}
+            containerType={value.containerType}
             key={index}
             id={value.id}
             title={value.title}

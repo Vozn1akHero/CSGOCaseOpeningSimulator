@@ -17,16 +17,24 @@ export default class Storage {
   };
 
   static selectAll = () => {
-    let all = JSON.parse(localStorage.getItem(Storage.identifier));
-    return [
-      ...all.map((value) => {
-        if (value.quality)
-          value.quality = Object.keys(Quality).find(
-            (key) => Quality[key] === value.quality
-          );
+    const all = JSON.parse(localStorage.getItem(Storage.identifier));
+    if (all) {
+      return [
+        ...all.map((value) => {
+          if (value.quality)
+            value.quality = Object.keys(Quality).find(
+              (key) => Quality[key] === value.quality
+            );
 
-        return value;
-      }),
-    ];
+          return value;
+        }),
+      ];
+    }
+
+    return [];
   };
+
+  static clearUnboxedItems = () => {
+    localStorage.removeItem(Storage.identifier)
+  }
 }
