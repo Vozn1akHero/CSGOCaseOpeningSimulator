@@ -112,7 +112,7 @@ export default class Item extends Component {
 
         <div className={styles.imageWrap}>
           <img
-            src={this.props.image}
+            src={this.props.imageUrl ? this.props.imageUrl : this.props.imageLocalPath}
             className={`${styles.img} ${this.props.inventoryStyles && styles.img_inInventory
               }`}
             alt=''

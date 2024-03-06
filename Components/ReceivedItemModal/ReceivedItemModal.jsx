@@ -125,7 +125,7 @@ export default class ReceivedItemModal extends Component {
           {this.props.isStatrak && "StatTrak™" + " "} {this.props.title}
         </h1>
         <div className={`${styles.imageWrap}`}>
-          <img src={this.props.image} alt='' />
+          <img src={this.props.imageUrl ? this.props.imageUrl : this.props.image} alt='' />
         </div>
         <div className={styles.bottomWrap}>
           <span>You got a new item!</span>

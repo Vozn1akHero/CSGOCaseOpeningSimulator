@@ -40,7 +40,7 @@ export default class ItemLine extends Component {
               <Item
                 key={index}
                 type={itemType.GOLD}
-                image={"/images/specialitem1.png"}
+                imageLocalPath={"/images/specialitem1.png"}
                 isStatrak={value.isStatrak}
                 weapon={"★ Rare Special Item ★"}
               />
@@ -50,7 +50,8 @@ export default class ItemLine extends Component {
               <Item
                 key={index}
                 type={value.type}
-                image={value.image}
+                imageLocalPath={value.image}
+                imageUrl={value.imageUrl}
                 showSkinTitle
                 isStatrak={value.isStatrak}
                 weapon={value.weapon}

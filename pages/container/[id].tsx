@@ -4,10 +4,10 @@ import { CaseOpeningSec } from "../../Components/CaseOpeningSec/CaseOpeningSec.j
 import { Layout } from "../../Components/Layout/Layout.jsx";
 import Showcase from "../../Components/Showcase/Showcase.jsx";
 import { containerType } from "../../public/scripts/drop/container-type.js";
-import { Cases } from "../../public/data/cases.js";
+import { Cases } from "../../public/data/cases/cases.js";
 import { Souvenir } from "../../public/data/souvenir.js";
 import { CenteredWrapper } from "../../Components/CenteredWrapper/CenteredWrapper.jsx";
-import { Capsules } from "../../public/data/capsules.js";
+import { Capsules } from "../../public/data/capsules/capsules.js";
 
 const Container = () => {
   const router = useRouter();
@@ -26,12 +26,13 @@ const Container = () => {
       switch (type) {
         case caseType.title: {
           setChosenContainerType(caseType);
-          const { title, image, items, specialItems } = Cases.find(
+          const { title, image, imageUrl, items, specialItems } = Cases.find(
             (value) => value.id === +router.query.id
           );
           setContainerInfo({
             title,
             image,
+            imageUrl,
           });
           setItems(items);
           setSpecialItems(specialItems);
@@ -39,24 +40,27 @@ const Container = () => {
         }
         case souvenirType.title: {
           setChosenContainerType(souvenirType);
-          const { title, image, items } = Souvenir.find(
+          const { title, image, imageUrl, items } = Souvenir.find(
             (value) => value.id === +router.query.id
           );
           setContainerInfo({
             title,
             image,
+            imageUrl,
           });
           setItems(items);
           break;
         }
         case capsuleType.title: {
           setChosenContainerType(capsuleType);
-          const { title, image, items } = Capsules.find(
+          console.log(Capsules)
+          const { title, image, imageUrl, items } = Capsules.find(
             (value) => value.id === +router.query.id
           );
           setContainerInfo({
             title,
             image,
+            imageUrl
           });
           setItems(items);
           break;
@@ -78,6 +82,7 @@ const Container = () => {
               containerType={chosenContainerType}
               caseTitle={containerInfo.title}
               caseImage={containerInfo.image}
+              caseImageUrl={containerInfo.imageUrl}
               specialItems={specialItems}
             />
           )}

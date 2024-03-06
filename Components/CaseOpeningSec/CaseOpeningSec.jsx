@@ -167,6 +167,7 @@ export const CaseOpeningSec = (props) => {
             quality={receivedItem.quality}
             type={receivedItem.type}
             image={receivedItem.image}
+            imageUrl={receivedItem.imageUrl}
             onTryAgainBtnClick={() => onTryAgainBtnClick()}
             onSubmit={() => onReceivedItemConfirmation()}
           />
@@ -176,6 +177,7 @@ export const CaseOpeningSec = (props) => {
           {!openingInProgress && (
             <CaseOpeningConfirmation
               image={props.caseImage}
+              imageUrl={props.caseImageUrl}
               title={props.caseTitle}
               onSubmit={() => openCase()}
             />

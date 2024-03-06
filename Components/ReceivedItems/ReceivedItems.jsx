@@ -21,7 +21,8 @@ export default class ReceivedItems extends Component {
             inventoryStyles
             withModalInfo
             type={value.type}
-            image={value.image}
+            imageLocalPath={value.image}
+            imageUrl={value.imageUrl}
             weapon={value.weapon}
             quality={value.quality}
             skin={value.skin}

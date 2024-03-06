@@ -7,7 +7,7 @@ export const CaseOpeningConfirmation = (props) => {
   return (
     <div className={styles.caseOpeningConfirmation}>
       <div className={styles.itemWrap}>
-        <Item type={itemType.GREY} image={props.image} weapon={props.title} />
+        <Item type={itemType.GREY} imageLocalPath={props.image} imageUrl={props.imageUrl} weapon={props.title} />
       </div>
 
       <GreenButton id="unlockBtn" onClick={() => props.onSubmit()} text="Continue" />

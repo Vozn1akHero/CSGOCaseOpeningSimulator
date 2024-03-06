@@ -26,6 +26,7 @@ export default class CaseList extends Component {
             id={value.id}
             title={value.title}
             img={value.image}
+            imageUrl={value.imageUrl}
           />
         ))}
       </ScrollableList>

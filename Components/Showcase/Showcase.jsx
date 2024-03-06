@@ -15,7 +15,8 @@ export default class Showcase extends Component {
               key={index}
               showSkinTitle
               type={value.type}
-              image={value.image}
+              imageLocalPath={value.image}
+              imageUrl={value.imageUrl}
               weapon={value.weapon}
               skin={value.skin}
             />
@@ -23,7 +24,7 @@ export default class Showcase extends Component {
           {this.props.baseContainerType && (
             <Item
               type={itemType.GOLD}
-              image={"/images/specialitem1.png"}
+              imageLocalPath={"/images/specialitem1.png"}
               weapon={"★ Rare Special Item ★"}
             />
           )}
