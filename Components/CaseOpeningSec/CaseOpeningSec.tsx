@@ -29,7 +29,6 @@ export const CaseOpeningSec = (props) => {
 
   useEffect(() => {
     document.addEventListener("keydown", handleQuickOpen)
-
     return () => {
       document.removeEventListener("keydown", handleQuickOpen)
     }

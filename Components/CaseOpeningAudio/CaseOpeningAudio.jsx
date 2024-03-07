@@ -6,49 +6,72 @@ export default class CaseOpeningAudio extends Component {
 
   constructor(props) {
     super(props);
-    this.rollSound = React.createRef();
-    this.rollSound2 = React.createRef();
-    this.openSound = React.createRef();
+
+    //this.rollSound = React.createRef();
+    //this.rollSound2 = React.createRef();
+    //this.openSound = React.createRef();
+
+    this.rollSound = document.createElement("audio");
+    const source1 = document.createElement("source");
+    source1.src = "/sound/roll.mp3"
+    source1.type = 'audio/mp3'
+    this.rollSound.appendChild(source1)
+
+    this.rollSound2 = document.createElement("audio");
+    const source2 = document.createElement("source");
+    source2.src = "/sound/roll.mp3"
+    source2.type = 'audio/mp3'
+    this.rollSound2.appendChild(source2)
+
+    this.openSound = document.createElement("audio");
+    const source3 = document.createElement("source");
+    source3.src = "/sound/open.mp3"
+    source3.type = 'audio/mp3'
+    this.openSound.appendChild(source3)
   }
 
   componentDidMount() {
     this.playOpeningSound();
-    this.rollSound.current.volume = this.context.settings.volume;
-    this.rollSound2.current.volume = this.context.settings.volume;
-    this.openSound.current.volume = this.context.settings.volume;
+    this.rollSound.volume = this.context.settings.volume;
+    this.rollSound2.volume = this.context.settings.volume;
+    this.openSound.volume = this.context.settings.volume;
   }
 
   playOpeningSound = () => {
-    this.openSound.current.play();
-    this.openSound.current.playbackRate = 1.3;
+    this.openSound.play();
+    this.openSound.playbackRate = 1.3;
 
-    this.rollSound.current.loop = true;
-    this.rollSound.current.playbackRate = 1.1;
+    this.rollSound.loop = true;
+    this.rollSound.playbackRate = 1.1;
 
-    this.rollSound2.current.loop = true;
-    this.rollSound2.current.playbackRate = 1.1;
+    this.rollSound2.loop = true;
+    this.rollSound2.playbackRate = 1.1;
 
-    this.rollSound.current.play();
+    this.rollSound.play();
     setTimeout(() => {
-      this.rollSound2?.current?.play();
+      this.rollSound2?.play();
     }, (12.5 * this.context.settings.caseOpeningTime) / 100);
 
     setTimeout(() => {
-      this.rollSound2?.current?.pause();
-      if (this.rollSound.current) this.rollSound.current.playbackRate = 1;
+      this.rollSound2?.pause();
+      if (this.rollSound) this.rollSound.playbackRate = 1;
     }, (50 * this.context.settings.caseOpeningTime) / 100);
     setTimeout(() => {
-      if (this.rollSound.current) this.rollSound.current.playbackRate = 0.9;
+      if (this.rollSound) this.rollSound.playbackRate = 0.9;
     }, (75 * this.context.settings.caseOpeningTime) / 100);
     setTimeout(() => {
-      this.rollSound?.current?.pause();
+      this.rollSound?.pause();
+
+      this.openSound?.remove();
+      this.rollSound?.remove();
+      this.rollSound2?.remove();
     }, this.context.settings.caseOpeningTime);
   };
 
   render() {
     return (
       <>
-        <audio ref={this.openSound} id='caseOpeningAudioOpen'>
+        {/* <audio ref={this.openSound} id='caseOpeningAudioOpen'>
           <source src='/sound/open.mp3' type='audio/mp3' />
         </audio>
         <audio ref={this.rollSound} id='caseOpeningAudioRoll'>
@@ -56,7 +79,7 @@ export default class CaseOpeningAudio extends Component {
         </audio>
         <audio ref={this.rollSound2} id='caseOpeningAudioRoll'>
           <source src='/sound/roll.mp3' type='audio/mp3' />
-        </audio>
+        </audio> */}
       </>
     );
   }
