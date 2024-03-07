@@ -5,7 +5,7 @@ export const HeaderAnchor = (props) => {
   return (
     <>
       <>
-        <Link style={{ "text-decoration": "none" }} href={props.to}>
+        <Link style={{ textDecoration: "none" }} href={props.to}>
           <span className='header-btn'>
             {props.title}
           </span>
