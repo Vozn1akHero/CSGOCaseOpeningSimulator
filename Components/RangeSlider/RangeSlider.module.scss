@@ -1,0 +1,37 @@
+.rangeSlider {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+
+    .sliderWrap {
+        display: flex;
+    }
+
+    .sliderLabel {
+        color: white;
+    }
+
+    .sliderValue {
+        color: white;
+        margin-left: 10px;
+    }
+
+    .sliderInput {
+        width: 250px;
+        -webkit-appearance: none;
+        height: 7px;
+        background: grey;
+        border-radius: 5px;
+        background-image: linear-gradient(#8b98a6, #8b98a6);
+        background-repeat: no-repeat;
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #8b98a6;
+            cursor: pointer;
+            box-shadow: 0 0 2px 0 #555;
+        }
+    }
+}

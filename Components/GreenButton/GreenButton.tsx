@@ -1,6 +1,14 @@
 import React from "react";
 
-export const GreenButton = (props) => {
+type GreenButtonProps = {
+  text: String;
+  height?: number;
+  width?: number;
+  onClick: () => void;
+  id: string;
+}
+
+export const GreenButton = (props: GreenButtonProps) => {
   const styles = (() => {
     let obj = {};
     if (props.height) {
@@ -27,9 +35,6 @@ export const GreenButton = (props) => {
         {`
           .green-button {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 1rem;
             background: #507325;
             border: none;
             width: 11rem;

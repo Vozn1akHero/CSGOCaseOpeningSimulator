@@ -5,3 +5,8 @@ const withImages = require("next-images");
 //   cssModules: true,
 // });
 module.exports = withImages();
+module.exports = {
+    compiler: {
+        styledComponents: true
+    }
+}

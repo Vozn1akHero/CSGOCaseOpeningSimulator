@@ -98,8 +98,8 @@ export const CaseOpeningSec = (props) => {
   };
 
   const selectRandomSouvenir = () => {
-    let randomItem = new RandomItem();
-    let randomSouvenir = new RandomSouvenir();
+    const randomItem = new RandomItem();
+    const randomSouvenir = new RandomSouvenir();
     const type = randomSouvenir.getRandomSouvenirTypeByItems(props.items);
     const item = randomItem.getSouvenirItemByType(props.items, type);
     return item;

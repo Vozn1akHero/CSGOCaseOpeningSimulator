@@ -17,53 +17,58 @@ const Container = () => {
   const [chosenContainerType, setChosenContainerType] = useState(null);
 
   useEffect(() => {
-    if (router && router.query && router.query.id) {
-      const type = +router.query.type;
-      switch (type) {
-        case containerType.CASE: {
-          setChosenContainerType(containerType.CASE);
-          const { title, image, imageUrl, items, specialItems } = Cases.find(
-            (value) => value.id === +router.query.id
-          );
-          setContainerInfo({
-            title,
-            image,
-            imageUrl,
-          });
-          setItems(items);
-          setSpecialItems(specialItems);
-          break;
-        }
-        case containerType.SOUVENIR: {
-          setChosenContainerType(containerType.SOUVENIR);
-          const { title, image, imageUrl, items } = Souvenir.find(
-            (value) => value.id === +router.query.id
-          );
-          setContainerInfo({
-            title,
-            image,
-            imageUrl,
-          });
-          setItems(items);
-          break;
-        }
-        case containerType.CAPSULE: {
-          setChosenContainerType(containerType.CAPSULE);
-          const { title, image, imageUrl, items } = Capsules.find(
-            (value) => value.id === +router.query.id
-          );
-          setContainerInfo({
-            title,
-            image,
-            imageUrl
-          });
-          setItems(items);
-          break;
-        }
-        default: {
-          throw "undefined container type"
+    try {
+      if (router && router.query && router.query.id) {
+        const type = +router.query.type;
+        switch (type) {
+          case containerType.CASE: {
+            setChosenContainerType(containerType.CASE);
+            const { title, image, imageUrl, items, specialItems } = Cases.find(
+              (value) => value.id === +router.query.id
+            );
+            setContainerInfo({
+              title,
+              image,
+              imageUrl,
+            });
+            setItems(items);
+            setSpecialItems(specialItems);
+            break;
+          }
+          case containerType.SOUVENIR: {
+            setChosenContainerType(containerType.SOUVENIR);
+            const { title, image, imageUrl, items } = Souvenir.find(
+              (value) => value.id === +router.query.id
+            );
+            setContainerInfo({
+              title,
+              image,
+              imageUrl,
+            });
+            setItems(items);
+            break;
+          }
+          case containerType.CAPSULE: {
+            setChosenContainerType(containerType.CAPSULE);
+            const { title, image, imageUrl, items } = Capsules.find(
+              (value) => value.id === +router.query.id
+            );
+            setContainerInfo({
+              title,
+              image,
+              imageUrl
+            });
+            setItems(items);
+            break;
+          }
+          default: {
+            throw "undefined container type"
+          }
         }
       }
+    }
+    catch {
+      router.push("/")
     }
   }, [router]);
 
