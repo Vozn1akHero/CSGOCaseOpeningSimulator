@@ -56,6 +56,13 @@ const Katowice2014Legends = {
             type: 2,
         },
         {
+            title: "Sticker | LGB eSports | Katowice 2014",
+            weapon: "Sticker",
+            skin: "LGB eSports",
+            image: "/images/capsules/katowice2014/legends/kato2014lgb.webp",
+            type: 2,
+        },
+        {
             title: "Sticker | Team Dignitas (Holo) | Katowice 2014",
             weapon: "Sticker",
             skin: "Team Dignitas (Holo)",

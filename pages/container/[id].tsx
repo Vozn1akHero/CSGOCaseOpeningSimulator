@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { CaseOpeningSec } from "../../Components/CaseOpeningSec/CaseOpeningSec.jsx";
+import { CaseOpeningSec } from "../../Components/CaseOpeningSec/CaseOpeningSec";
 import { Layout } from "../../Components/Layout/Layout.jsx";
 import Showcase from "../../Components/Showcase/Showcase.jsx";
 import { containerType } from "../../public/scripts/drop/container-type.js";

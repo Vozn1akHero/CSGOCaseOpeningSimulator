@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../../contexts/SettingsContext";
 import { containerType } from "../../public/scripts/drop/container-type";
@@ -22,7 +22,7 @@ export const CaseOpeningSec = (props) => {
     false
   );
   const [receivedItem, setReceivedItem] = useState(null);
-  const router = useRouter();
+  const router: NextRouter = useRouter();
   const ActItemIndex = 25, ItemsInLine = 30;
   const [cancellationRequested, setCancellationRequested] = useState(false)
   const [autoOpenedCount, setAutoOpenedCount] = useState(0)
