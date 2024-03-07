@@ -13,9 +13,9 @@ export default class CaseOpeningAudio extends Component {
 
   componentDidMount() {
     this.playOpeningSound();
-    this.rollSound.current.volume = this.context.volume;
-    this.rollSound2.current.volume = this.context.volume;
-    this.openSound.current.volume = this.context.volume;
+    this.rollSound.current.volume = this.context.settings.volume;
+    this.rollSound2.current.volume = this.context.settings.volume;
+    this.openSound.current.volume = this.context.settings.volume;
   }
 
   playOpeningSound = () => {
@@ -31,18 +31,18 @@ export default class CaseOpeningAudio extends Component {
     this.rollSound.current.play();
     setTimeout(() => {
       this.rollSound2?.current?.play();
-    }, (12.5 * this.context.caseOpeningTime) / 100);
+    }, (12.5 * this.context.settings.caseOpeningTime) / 100);
 
     setTimeout(() => {
       this.rollSound2?.current?.pause();
       if (this.rollSound.current) this.rollSound.current.playbackRate = 1;
-    }, (50 * this.context.caseOpeningTime) / 100);
+    }, (50 * this.context.settings.caseOpeningTime) / 100);
     setTimeout(() => {
       if (this.rollSound.current) this.rollSound.current.playbackRate = 0.9;
-    }, (75 * this.context.caseOpeningTime) / 100);
+    }, (75 * this.context.settings.caseOpeningTime) / 100);
     setTimeout(() => {
       this.rollSound?.current?.pause();
-    }, this.context.caseOpeningTime);
+    }, this.context.settings.caseOpeningTime);
   };
 
   render() {

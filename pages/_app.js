@@ -1,3 +1,4 @@
+import SettingsContextProvider from "contexts/SettingsContext";
 import "../Resources/style.css";
 
 export default function MyApp({ Component, pageProps }) {
@@ -25,7 +26,9 @@ export default function MyApp({ Component, pageProps }) {
         <source src='/sound/drop5.mp3' type='audio/mp3' />
       </audio>
 
-      <Component {...pageProps} />
+      <SettingsContextProvider>
+        <Component {...pageProps} />
+      </SettingsContextProvider>
     </>
   );
 }

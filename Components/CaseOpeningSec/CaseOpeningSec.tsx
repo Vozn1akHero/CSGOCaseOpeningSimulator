@@ -147,7 +147,7 @@ export const CaseOpeningSec = (props) => {
     setOpeningInProgress(true);
     setTimeout(() => {
       setReceivedItemModalVisible(true);
-    }, context.caseOpeningTime);
+    }, context.settings.caseOpeningTime);
   };
   const onReceivedItemConfirmation = () => {
     router.push("/");

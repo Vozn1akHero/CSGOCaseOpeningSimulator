@@ -20,20 +20,20 @@ const Animation = styled.div`
 export default class ItemLine extends Component {
   static contextType = SettingsContext;
 
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = { slider: getSlider() };
   }
 
-  static getDerivedStateFromProps(props, state) {
-    return {
-      slider: getSlider(),
-    };
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   return {
+  //     slider: getSlider(),
+  //   };
+  // }
 
   render() {
     return (
-      <Animation slider={this.state.slider} time={this.context.caseOpeningTime}>
+      <Animation slider={this.state.slider} time={this.context.settings.caseOpeningTime}>
         {this.props.items.map((value, index) => {
           if (value.type === itemType.GOLD) {
             return (

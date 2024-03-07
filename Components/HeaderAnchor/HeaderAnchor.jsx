@@ -20,7 +20,6 @@ export const HeaderAnchor = (props) => {
             background: none;
             outline: none;
             font-weight: 500;
-            font-size: 1.01rem;
             color: white;
             display: flex;
             align-items: center;

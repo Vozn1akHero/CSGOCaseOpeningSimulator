@@ -6,6 +6,7 @@ type GreenButtonProps = {
   width?: number;
   onClick: () => void;
   id: string;
+  customColor?: string;
 }
 
 export const GreenButton = (props: GreenButtonProps) => {
@@ -16,6 +17,9 @@ export const GreenButton = (props: GreenButtonProps) => {
     }
     if (props.width) {
       obj = { ...obj, width: props.width };
+    }
+    if (props.customColor) {
+      obj = { ...obj, background: props.customColor };
     }
     return obj;
   })();
@@ -45,6 +49,9 @@ export const GreenButton = (props: GreenButtonProps) => {
           }
           .green-button :active {
             color: black;
+          }
+          .green-button:hover{
+            background: #5d7d37;
           }
         `}
       </style>

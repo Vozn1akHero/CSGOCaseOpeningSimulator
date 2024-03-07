@@ -32,11 +32,11 @@ export default class ReceivedItemModal extends Component {
   }
 
   componentDidMount() {
-    this.caseOpeningAudioBaseDrop.current.volume = this.context.volume;
-    this.caseOpeningAudioBlueDrop.current.volume = this.context.volume;
-    this.caseOpeningAudioPurpleDrop.current.volume = this.context.volume;
-    this.caseOpeningAudioPinkDrop.current.volume = this.context.volume;
-    this.caseOpeningAudioRedDrop.current.volume = this.context.volume;
+    this.caseOpeningAudioBaseDrop.current.volume = this.context.settings.volume;
+    this.caseOpeningAudioBlueDrop.current.volume = this.context.settings.volume;
+    this.caseOpeningAudioPurpleDrop.current.volume = this.context.settings.volume;
+    this.caseOpeningAudioPinkDrop.current.volume = this.context.settings.volume;
+    this.caseOpeningAudioRedDrop.current.volume = this.context.settings.volume;
 
     switch (this.props.type) {
       case itemType.GREY:

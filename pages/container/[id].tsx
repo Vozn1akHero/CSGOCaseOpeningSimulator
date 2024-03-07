@@ -73,28 +73,26 @@ const Container = () => {
   }, [router]);
 
   return (
-    <Layout
-      content={
-        <CenteredWrapper>
-          {items && chosenContainerType && (
-            <CaseOpeningSec
-              items={items}
-              containerType={chosenContainerType}
-              caseTitle={containerInfo.title}
-              caseImage={containerInfo.image}
-              caseImageUrl={containerInfo.imageUrl}
-              specialItems={specialItems}
-            />
-          )}
-          {items && (
-            <Showcase
-              baseContainerType={chosenContainerType === containerType.CASE}
-              items={items}
-            />
-          )}
-        </CenteredWrapper>
-      }
-    />
+    <Layout>
+      <CenteredWrapper>
+        {items && chosenContainerType && (
+          <CaseOpeningSec
+            items={items}
+            containerType={chosenContainerType}
+            caseTitle={containerInfo.title}
+            caseImage={containerInfo.image}
+            caseImageUrl={containerInfo.imageUrl}
+            specialItems={specialItems}
+          />
+        )}
+        {items && (
+          <Showcase
+            baseContainerType={chosenContainerType === containerType.CASE}
+            items={items}
+          />
+        )}
+      </CenteredWrapper>
+    </Layout>
   );
 };
 

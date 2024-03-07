@@ -1,7 +1,10 @@
 import { Quality } from "../drop/quality";
+import { Settings } from "contexts/SettingsContext"
 
 export default class Storage {
-  static identifier = "receivedItems";
+  static readonly identifier: string = "receivedItems";
+  static readonly settings: string = "settings";
+
 
   static saveReceivedItem = (item) => {
     const curValue =
@@ -36,5 +39,15 @@ export default class Storage {
 
   static clearUnboxedItems = () => {
     localStorage.removeItem(Storage.identifier)
+  }
+
+  static updateSettings = (settings: Settings) => {
+    localStorage.setItem(Storage.settings, JSON.stringify(settings));
+  }
+
+  static getSettings = (): Settings => {
+    const settings = localStorage.getItem(Storage.settings)
+    if (settings) return JSON.parse(settings)
+    return null;
   }
 }

@@ -1,15 +1,14 @@
 import React from "react";
 import HeaderNav from "../HeaderNav/HeaderNav";
-import SettingsContextProvider from "../../contexts/SettingsContext";
+import SettingsContextProvider from "contexts/SettingsContext";
 
 export const Layout = (props) => {
   return (
-    <SettingsContextProvider>
-      <div className='layout'>
-        <HeaderNav />
-        <main>{props.content}</main>
-        <style jsx>
-          {`
+    <div className='layout'>
+      <HeaderNav />
+      <main>{props.children}</main>
+      <style jsx>
+        {`
             .layout {
               background-image: url("/images/csgomenubg.jpg");
               min-height: 100vh;
@@ -22,8 +21,7 @@ export const Layout = (props) => {
               margin-top: 3rem;
             }
           `}
-        </style>
-      </div>
-    </SettingsContextProvider>
+      </style>
+    </div>
   );
 };
