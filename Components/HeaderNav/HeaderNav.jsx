@@ -6,8 +6,8 @@ export default class HeaderNav extends Component {
   render() {
     return (
       <div className={styles.headerNav}>
-        <HeaderAnchor bordered to='/' icon={"/images/homeicon.png"} />
-        <HeaderAnchor to='/settings' icon={"/images/settingsicon.png"} />
+        <HeaderAnchor bordered to='/' title="INVENTORY" />
+        <HeaderAnchor to='/settings' title="OPTIONS" />
       </div>
     );
   }

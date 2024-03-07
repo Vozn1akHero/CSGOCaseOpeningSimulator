@@ -5,9 +5,9 @@ export const HeaderAnchor = (props) => {
   return (
     <>
       <>
-        <Link href={props.to}>
+        <Link style={{ "text-decoration": "none" }} href={props.to}>
           <span className='header-btn'>
-            <img src={props.icon} alt='' />
+            {props.title}
           </span>
         </Link>
         {props.bordered && <hr className='header-btn__border' />}
@@ -26,9 +26,6 @@ export const HeaderAnchor = (props) => {
             align-items: center;
             justify-content: center;
             text-decoration: none;
-          }
-          .header-btn img {
-            width: 17px;
           }
           .header-btn__border {
             height: 100%;

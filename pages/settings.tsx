@@ -10,7 +10,7 @@ export default class Settings extends Component {
         content={
           <CenteredWrapper>
             <div className='settings'>
-              <button onClick={() => {
+              <button className="btn" onClick={() => {
                 Storage.clearUnboxedItems();
               }}>Clear unboxed items</button>
             </div>

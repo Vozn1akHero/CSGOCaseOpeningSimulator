@@ -4,6 +4,12 @@ export const getRandomInt = (min, max) => {
   return Math.floor(getRandomIntSecure() * (max - min)) + min;
 };
 
+export const getRandomIntUnsafe = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 export const getRandomIntSecure = () => {
   const arr = new Uint32Array(2);
   crypto.getRandomValues(arr);

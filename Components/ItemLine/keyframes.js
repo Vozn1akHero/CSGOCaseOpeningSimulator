@@ -1,8 +1,8 @@
 import { keyframes } from "styled-components";
-import { getRandomInt } from "../../public/scripts/utils/random";
+import { getRandomIntUnsafe } from "../../public/scripts/utils/random";
 
 export const getSlider = () => {
-  const pos = getRandomInt(2978, 3104);
+  const pos = getRandomIntUnsafe(2978, 3104);
   return keyframes`
     0% {
       transform: translateX(0);
