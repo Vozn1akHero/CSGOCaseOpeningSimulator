@@ -6,7 +6,7 @@ import { Dropdown } from "../Dropdown/Dropdown";
 import { containerType } from "../../public/scripts/drop/container-type";
 //import cases from "../../public/cases.json";
 import { Souvenir } from "../../public/data/souvenirs/souvenir.js";
-import { Cases } from "../../public/data/cases/cases.js";
+import { Cases } from "../../public/data/cases/cases";
 import { Capsules } from "../../public/data/capsules/capsules";
 import ReceivedItems from "../ReceivedItems/ReceivedItems";
 import { capitalizeFirstLetter } from "../../public/scripts/utils/string-utils";

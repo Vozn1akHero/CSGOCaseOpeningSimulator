@@ -1,15 +1,15 @@
 import React from "react";
 import Inventory from "../Components/Inventory/Inventory";
 import { Layout } from "../Components/Layout/Layout";
-import { CenteredWrapper } from "../Components/CenteredWrapper/CenteredWrapper";
+import { GrayBlock } from "Components/GrayBlock/GrayBlock";
 
 class App extends React.Component {
   render() {
     return (
       <Layout>
-        <CenteredWrapper>
+        <GrayBlock>
           <Inventory />
-        </CenteredWrapper>
+        </GrayBlock>
       </Layout>
     );
   }

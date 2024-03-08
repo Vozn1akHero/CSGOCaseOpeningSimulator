@@ -1,0 +1,14 @@
+.profilePanel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .profileInfo {
+        height: 25%;
+    }
+
+    .friends {
+        height: 73%;
+    }
+}

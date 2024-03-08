@@ -1,5 +1,6 @@
 import { containerType } from "public/scripts/drop/container-type"
-import { Knives } from "../knives"
+import { Knives } from "../knives/knives"
+import { PrismaKnives } from "../knives/prisma-knives"
 
 export const Prisma2Case = {
     id: 1,
@@ -127,5 +128,5 @@ export const Prisma2Case = {
             type: 5,
         },
     ],
-    specialItems: Knives["prisma"],
+    specialItems: PrismaKnives,
 }

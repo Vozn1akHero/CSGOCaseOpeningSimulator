@@ -4,7 +4,7 @@ import { CaseOpeningSec } from "../../Components/CaseOpeningSec/CaseOpeningSec";
 import { Layout } from "../../Components/Layout/Layout.jsx";
 import Showcase from "../../Components/Showcase/Showcase.jsx";
 import { containerType } from "../../public/scripts/drop/container-type.js";
-import { Cases } from "../../public/data/cases/cases.js";
+import { Cases } from "../../public/data/cases/cases";
 import { Souvenir } from "../../public/data/souvenirs/souvenir.js";
 import { CenteredWrapper } from "../../Components/CenteredWrapper/CenteredWrapper.jsx";
 import { Capsules } from "../../public/data/capsules/capsules.js";

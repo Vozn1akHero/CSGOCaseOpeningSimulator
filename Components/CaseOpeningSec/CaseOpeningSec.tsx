@@ -201,6 +201,7 @@ export const CaseOpeningSec = (props) => {
             padding-top: 2rem;
             background: #121b24;
             box-shadow: 0px 0px 11px 1px rgba(0, 0, 0, 0.75);
+            position: relative;
           }
 
           .case-opening-sec .head-wrap {

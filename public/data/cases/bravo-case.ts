@@ -1,8 +1,9 @@
-import { Knives } from "../knives";
-import { Quality } from "../../scripts/drop/quality";
 import { containerType } from "public/scripts/drop/container-type";
+import { Quality } from "../../scripts/drop/quality";
+import { DefaultKnives } from "../knives/default-knives";
+import { Case } from "./case";
 
-export const BravoCase = {
+export const BravoCase: Case = {
     id: 2,
     title: "Bravo Case",
     containerType: containerType.CASE,
@@ -117,5 +118,5 @@ export const BravoCase = {
             type: 5,
         },
     ],
-    specialItems: Knives["default"],
+    specialItems: DefaultKnives,
 }

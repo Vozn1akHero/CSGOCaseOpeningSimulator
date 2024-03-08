@@ -15,11 +15,13 @@ export const CenteredWrapper = (props) => {
           .centered-wrapper .m-sec {
             box-shadow: 0px 0px 11px 1px rgba(0, 0, 0, 0.75);
             height: 85vh;
-            width: max(70vw, 1030px);
+            width: 100%;
             background: #333b42;
           }
         `}
       </style>
+
+      {/* width: max(70vw, 1030px); */}
     </div>
   );
 };

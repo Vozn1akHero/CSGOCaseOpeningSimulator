@@ -54,9 +54,13 @@
       border: none;
       outline: none;
       font-size: 0.9rem;
-      margin: 10px 0;
+      padding: 10px 0;
       width: 100%;
       text-align: center;
+
+      &:hover {
+        background: #3c4750;
+      }
     }
   }
 }

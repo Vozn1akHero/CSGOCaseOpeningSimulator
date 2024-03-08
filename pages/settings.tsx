@@ -1,11 +1,12 @@
-import React, { Component, useContext } from "react";
+import React from "react";
 import { Layout } from "../Components/Layout/Layout";
 import { CenteredWrapper } from "../Components/CenteredWrapper/CenteredWrapper";
 import Storage from "public/scripts/utils/storage";
-import { SettingsContext, SettingsContextType, useSettingsContext } from "contexts/SettingsContext";
+import { SettingsContext, SettingsContextType } from "contexts/SettingsContext";
 import { RangeSlider } from "Components/RangeSlider/RangeSlider";
 import { GreenButton } from "Components/GreenButton/GreenButton";
 import styled, { css } from "styled-components";
+import { GrayBlock } from "Components/GrayBlock/GrayBlock";
 
 const SettingsDiv = styled.div`
   display: grid;
@@ -24,7 +25,7 @@ const Settings = () => {
 
   return (
     <Layout>
-      <CenteredWrapper>
+      <GrayBlock>
         <SettingsDiv>
           <RangeSlider initValue={settings.caseOpeningTime}
             label="Unboxing speed" min={0} max={5000} step={500}
@@ -53,7 +54,7 @@ const Settings = () => {
               }} />
           </CenteredDiv>
         </SettingsDiv>
-      </CenteredWrapper>
+      </GrayBlock>
     </Layout>
   );
 }
