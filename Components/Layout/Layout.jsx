@@ -15,9 +15,9 @@ export const Layout = (props) => {
     <div className='layout'>
       <HeaderNav />
       <main>
-        <div className="profile-panel-content">
+        {/* <div className="profile-panel-content">
           <ProfilePanel />
-        </div>
+        </div> */}
         <div className="subpage-content">
           {props.children}
         </div>
@@ -26,7 +26,7 @@ export const Layout = (props) => {
         {`
             .layout {
               background-image: url("/images/csgomenubg.jpg");
-              min-height: 100vh;
+              min-height: max(900px, 100vh);
               background-size: cover;
               background-repeat: no-repeat;
               min-width: 1200px;
@@ -34,20 +34,22 @@ export const Layout = (props) => {
 
             main {
               margin-top: 3rem;
-              display: flex;
+              {/* display: flex; */}
             }
 
-            .profile-panel-content{
+            {/* .profile-panel-content{
               width: 25%;
               padding-right: 20px;
               padding-left: 250px;
-            }
+            } */}
 
             .subpage-content{
-              width: 75%;
+              width: 70%;
               height: 85vh;
-              padding-left: 20px;
-              padding-right: 250px;
+              margin-left: auto;
+              margin-right: auto;
+              {/* padding-left: 20px;
+              padding-right: 250px; */}
             }
           `}
       </style>

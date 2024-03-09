@@ -8,6 +8,7 @@ import { Cases } from "../../public/data/cases/cases";
 import { Souvenir } from "../../public/data/souvenirs/souvenir.js";
 import { CenteredWrapper } from "../../Components/CenteredWrapper/CenteredWrapper.jsx";
 import { Capsules } from "../../public/data/capsules/capsules.js";
+import { GrayBlock } from "Components/GrayBlock/GrayBlock";
 
 const Container = () => {
   const router = useRouter();
@@ -23,13 +24,12 @@ const Container = () => {
         switch (type) {
           case containerType.CASE: {
             setChosenContainerType(containerType.CASE);
-            const { title, image, imageUrl, items, specialItems } = Cases.find(
+            const { title, image, items, specialItems } = Cases.find(
               (value) => value.id === +router.query.id
             );
             setContainerInfo({
               title,
               image,
-              imageUrl,
             });
             setItems(items);
             setSpecialItems(specialItems);
@@ -74,7 +74,7 @@ const Container = () => {
 
   return (
     <Layout>
-      <CenteredWrapper>
+      <GrayBlock>
         {items && chosenContainerType && (
           <CaseOpeningSec
             items={items}
@@ -91,7 +91,7 @@ const Container = () => {
             items={items}
           />
         )}
-      </CenteredWrapper>
+      </GrayBlock>
     </Layout>
   );
 };

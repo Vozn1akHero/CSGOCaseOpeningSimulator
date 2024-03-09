@@ -24,8 +24,14 @@ const SettingsContextProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   );
 
   useEffect(() => {
-    setSettings(getSettings())
+    const settings = getSettings();
+    console.log(settings)
+    setSettings(settings)
   }, [])
+
+  useEffect(() => {
+    Storage.updateSettings(settings)
+  }, [settings])
 
   const getSettings = (): Settings => {
     const savedSettings = Storage.getSettings()
@@ -35,7 +41,7 @@ const SettingsContextProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }
 
   return (
-    <SettingsContext.Provider value={value}>
+    <SettingsContext.Provider value={{ settings, setSettings }}>
       {children}
     </SettingsContext.Provider>
   )

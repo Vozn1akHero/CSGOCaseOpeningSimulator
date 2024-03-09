@@ -9,13 +9,15 @@ type RangeSliderProps = {
     onValueChange(value: number): void;
 }
 
-const RangeSliderDec = (props: RangeSliderProps) => {
+export const RangeSlider = (props: RangeSliderProps) => {
     const [value, setValue] = useState(props.initValue);
     const inputRef = createRef<HTMLInputElement>();
 
     useEffect(() => {
         inputRef.current.style.backgroundSize = `${(props.initValue * 100) / props.max}% 100%`;
-    }, [])
+        setValue(props.initValue)
+    }, [props.initValue])
+
 
     const changeSliderValue = (e: ChangeEvent<HTMLInputElement>) => {
         const nextValue: number = +e.target.value;
@@ -41,4 +43,4 @@ const RangeSliderDec = (props: RangeSliderProps) => {
     )
 }
 
-export const RangeSlider = memo(RangeSliderDec)
+//export const RangeSlider = memo(RangeSliderDec)

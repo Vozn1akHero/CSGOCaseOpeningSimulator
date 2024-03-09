@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Layout } from "../Components/Layout/Layout";
 import { CenteredWrapper } from "../Components/CenteredWrapper/CenteredWrapper";
 import Storage from "public/scripts/utils/storage";
@@ -22,21 +22,29 @@ const CenteredDiv = styled.div`
 
 const Settings = () => {
   const { settings, setSettings } = React.useContext(SettingsContext) as SettingsContextType;
+  const [caseOpeningTime, setCaseOpeningTime] = useState(0);
+  const [volume, setVolume] = useState(0);
+
+  useEffect(() => {
+    console.log(settings)
+    setCaseOpeningTime(settings.caseOpeningTime)
+    setVolume(settings.volume)
+  }, [settings])
 
   return (
     <Layout>
       <GrayBlock>
         <SettingsDiv>
-          <RangeSlider initValue={settings.caseOpeningTime}
+          <RangeSlider initValue={caseOpeningTime}
             label="Unboxing speed" min={0} max={5000} step={500}
-            onValueChange={caseOpeningTime => {
-              setSettings({ ...settings, caseOpeningTime })
+            onValueChange={value => {
+              setSettings({ ...settings, caseOpeningTime: value })
             }} />
-          <RangeSlider initValue={settings.volume}
+          <RangeSlider initValue={volume}
             label="Volume"
             min={0} max={1} step={0.1}
-            onValueChange={volume => {
-              setSettings({ ...settings, volume })
+            onValueChange={value => {
+              setSettings({ ...settings, volume: value })
             }} />
           <CenteredDiv>
             <GreenButton id="reset-btn"
