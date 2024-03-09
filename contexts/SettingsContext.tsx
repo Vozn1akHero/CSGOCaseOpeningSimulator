@@ -9,6 +9,7 @@ export interface Settings {
 export type SettingsContextType = {
   settings: Settings;
   setSettings: (settings: Settings) => void;
+  resetSettings: () => void;
 }
 
 export const SettingsContext = createContext<SettingsContextType | null>(null);
@@ -16,22 +17,20 @@ export const SettingsContext = createContext<SettingsContextType | null>(null);
 const SettingsContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const defSettings: Settings = { volume: 0.1, caseOpeningTime: 3500 };
   const [settings, setSettings] = useState<Settings>(defSettings);
-  const value = useMemo(
-    () => ({
-      settings, setSettings
-    }),
-    [settings]
-  );
 
   useEffect(() => {
     const settings = getSettings();
-    console.log(settings)
     setSettings(settings)
   }, [])
 
   useEffect(() => {
     Storage.updateSettings(settings)
   }, [settings])
+
+  const resetSettings = () => {
+    Storage.updateSettings(defSettings)
+    setSettings(defSettings)
+  }
 
   const getSettings = (): Settings => {
     const savedSettings = Storage.getSettings()
@@ -41,7 +40,7 @@ const SettingsContextProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }
 
   return (
-    <SettingsContext.Provider value={{ settings, setSettings }}>
+    <SettingsContext.Provider value={{ settings, setSettings, resetSettings }}>
       {children}
     </SettingsContext.Provider>
   )

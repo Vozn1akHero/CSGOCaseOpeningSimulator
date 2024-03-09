@@ -114,8 +114,8 @@ export const SpectrumCase = {
         },
         {
             title: "USP-S | Neo-Noir",
-            weapon: "USP-S | Neo-Noir",
-            skin: "USP-S | Neo-Noir",
+            weapon: "USP-S",
+            skin: "Neo-Noir",
             imageUrl: "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq5WYh-TLPbTYhFRd4cJ5nqeZrY-l3lbk_RJrZ2H1LIGSJA9rMlmC_wTrxbzvhpTuu5-fzSFg6SJx-z-DyKPJvxFR/360fx360f",
             type: 5,
         },

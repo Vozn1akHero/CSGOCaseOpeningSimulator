@@ -21,12 +21,11 @@ const CenteredDiv = styled.div`
 `
 
 const Settings = () => {
-  const { settings, setSettings } = React.useContext(SettingsContext) as SettingsContextType;
+  const { settings, setSettings, resetSettings } = React.useContext(SettingsContext) as SettingsContextType;
   const [caseOpeningTime, setCaseOpeningTime] = useState(0);
   const [volume, setVolume] = useState(0);
 
   useEffect(() => {
-    console.log(settings)
     setCaseOpeningTime(settings.caseOpeningTime)
     setVolume(settings.volume)
   }, [settings])
@@ -50,7 +49,7 @@ const Settings = () => {
             <GreenButton id="reset-btn"
               text="Reset"
               onClick={() => {
-
+                resetSettings();
               }} />
           </CenteredDiv>
           <CenteredDiv>
