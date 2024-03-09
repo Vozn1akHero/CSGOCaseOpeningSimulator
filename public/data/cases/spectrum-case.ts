@@ -110,7 +110,7 @@ export const SpectrumCase = {
             weapon: "M4A1-S",
             skin: "Decimator",
             imageUrl: "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uOxh7-Gw_alDL_UlWJc6dF-mNbN_Iv9nBrn-EI9MjjzctfBJwM-aFjT-ALtlb_s1Me8v5qayXtivXEi5HnbzRPkn1gSOcpKU1BE/360fx360f",
-            type: 5,
+            type: 4,
         },
         {
             title: "USP-S | Neo-Noir",
