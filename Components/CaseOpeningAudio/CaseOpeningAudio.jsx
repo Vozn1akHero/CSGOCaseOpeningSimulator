@@ -68,6 +68,16 @@ export default class CaseOpeningAudio extends Component {
     }, this.context.settings.caseOpeningTime);
   };
 
+  componentWillUnmount() {
+    this.openSound?.pause();
+    this.rollSound?.pause();
+    this.rollSound2?.pause();
+
+    this.openSound?.remove();
+    this.rollSound?.remove();
+    this.rollSound2?.remove();
+  }
+
   render() {
     return (
       <>
