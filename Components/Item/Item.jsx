@@ -85,9 +85,7 @@ export default class Item extends Component {
             modalInfoVisible: false,
           });
         }}
-        className={`${styles.item} ${this.props.inventoryStyles && styles.item_inInventory
-          }`}
-      >
+        className={`${styles.item} ${this.props.inventoryStyles && styles.item_inInventory}`}>
         {this.state.modalInfoVisible && this.props.withModalInfo && (
           <div className={styles.modalInfo}>
             <span className={styles.modalInfo__title}>
